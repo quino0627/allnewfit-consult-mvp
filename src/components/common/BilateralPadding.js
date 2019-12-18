@@ -1,9 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const BilateralBlock = styled.div`
   padding: 0 20%;
   height: 100%;
+  ${() =>
+    global.isMobile &&
+    css`
+      padding: 0 5%;
+    `}
 `;
 
 const BilateralPadding = ({ children }) => {

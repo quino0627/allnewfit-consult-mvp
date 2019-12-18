@@ -7,13 +7,17 @@
 import React from 'react';
 import MainPageWrapper from '../components/main/MainPageWrapper';
 import MainContent from '../components/main/MainContent';
+import MainSecondContent from '../components/main/MainSecondContent';
 import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 
 const MainPage = () => {
   return (
     <MainPageWrapper>
       <Header />
       <MainContent />
+      <MainSecondContent />
+      <Footer />
     </MainPageWrapper>
   );
 };
