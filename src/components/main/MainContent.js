@@ -62,21 +62,34 @@ const MainSubWord = styled.div`
   line-height: 1.2em;
   margin-top: 14px;
 `;
+const CustomButton = styled.a`
+  width: 144px;
+  height: 56px;
+  border-radius: 5px;
+  background-color: #3742fa;
+  color: #ced6e0;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0 24px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+`;
 
 const MainContent = () => {
   return (
     <MainContentBlock>
       <BilateralPadding>
         <MainBigWord>
-          체중계 숫자보다 <div />
-          중요한 가치를 <div /> 아는 당신에게
+          관리의 가치를 아는 당신 <div />
+          변화를 위한 첫 걸음
         </MainBigWord>
-        <MainSubWord>
-          건강관리를 위해 도전과 실패를 반복하셨나요?
-          <div />
-          작은 변화로 오래가는 습관을 만드세요.
-        </MainSubWord>
-        <Button theme="goToForm">건강 컨설팅 만나보기</Button>
+        <MainSubWord>운동도, 관리도 내 몸에 맞게</MainSubWord>
+        <CustomButton theme="goToForm" href="/consult?s=1">
+          건강 컨설팅 만나보기
+        </CustomButton>
       </BilateralPadding>
     </MainContentBlock>
   );

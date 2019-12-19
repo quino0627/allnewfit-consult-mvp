@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BilateralPadding from './BilateralPadding';
+import palette from '../../lib/styles/palette';
 
 /** 헤더 공간 확보 */
 const HeaderBlock = styled.header`
@@ -10,7 +11,7 @@ const HeaderBlock = styled.header`
   position: fixed;
   top: 0;
   margin-top: 0;
-  background-color: #f1f2f6;
+  background-color: ${props => palette[props.color]};
 `;
 
 /** 중앙정렬하는 컴포넌트 */
@@ -29,9 +30,9 @@ const Logo = styled.span`
 /** 차후에 메뉴가 들어갈 가능성을 위해... */
 // const Menus = styled.ul``
 
-const Header = () => {
+const Header = ({ color = 'default' }) => {
   return (
-    <HeaderBlock>
+    <HeaderBlock color={color}>
       <BilateralPadding>
         <InnerHeader>
           <Logo>ALL NEW FIT</Logo>

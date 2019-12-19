@@ -59,6 +59,21 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default' }) 
         padding: 0 24px;
         margin-top: 30px;
       `}
+     ${props =>
+       props.theme === 'goToNext' &&
+       css`
+         border-radius: 5px;
+         background-color: #3742fa;
+         color: #ced6e0;
+         font-weight: 500;
+         padding: 0 24px;
+         margin-top: 30px;
+         &:hover,
+         &:focus {
+           background: #7f8c8d;
+         }
+       `}
+
   
      ${props =>
        props.theme === 'bigPink' &&
