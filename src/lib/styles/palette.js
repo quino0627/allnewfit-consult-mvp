@@ -28,6 +28,8 @@ const palette = {
   cityLights: '#dfe4ea',
   brightGreek: '#3742fa',
   clearChill: '#1e90ff',
+  peace: '#a4b0be',
+  prestigeBlue: '#2f3542',
   default: '#f1f2f6',
 };
 

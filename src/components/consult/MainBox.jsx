@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import queryString from 'query-string';
+import { withRouter } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import ProgressBar from './ProgressBar';
 import Question from './Question';
@@ -16,23 +18,48 @@ const MainBoxBlock = styled.div`
   justify-content: space-between;
 `;
 
-const Buttons = styled.div`
+const ButtonsBlock = styled.div`
   height: 50px;
   display: flex;
   flex-direction: row-reverse;
 `;
 
-const MainBox = () => {
+const buildLink = ({ stage = 1 }) => {
+  // const query = queryString.stringify({ stage });
+  console.log(stage);
+  return `?s=${stage}`;
+};
+
+const Buttons = ({ stage, lastStage = 15 }) => {
+  return (
+    <ButtonsBlock>
+      <Button
+        theme="goToNext"
+        hide={(parseInt(stage, 10) === lastStage).toString()}
+        to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) + 1 })}
+      >
+        다음
+      </Button>
+      <Button
+        theme="goToPrev"
+        hide={(parseInt(stage, 10) === 1).toString()}
+        to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) - 1 })}
+      >
+        이전
+      </Button>
+    </ButtonsBlock>
+  );
+};
+
+const MainBox = ({ location }) => {
+  const { s } = queryString.parse(location.search);
   return (
     <MainBoxBlock>
-      <ProgressBar />
+      <ProgressBar stage={s} />
       <Question />
-      <Buttons>
-        <Button theme="goToNext">asdf</Button>
-        <Button theme="goToNext">asdf</Button>
-      </Buttons>
+      <Buttons stage={s} />
     </MainBoxBlock>
   );
 };
 
-export default MainBox;
+export default withRouter(MainBox);

@@ -11,6 +11,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import palette from '../../lib/styles/palette';
 // import { Round } from '../../lib/styles/Round';
 
 const Div = ({ children, ...rest }) => <div {...rest}>{children}</div>;
@@ -20,26 +21,31 @@ const Div = ({ children, ...rest }) => <div {...rest}>{children}</div>;
  *  disabled는 boolean값을 가집니다. true이면 버튼 비활성화
  * theme은 버튼 색깔을 바꿉니다.
  */
-const Button = ({ children, to, onClick, disabled = false, theme = 'default' }) => {
+const Button = ({ children, to, onClick, disabled = false, theme = 'default', hide = 'true' }) => {
   const Element = to && !disabled ? Link : Div;
   const ElementBlock = styled(Element)`
      /* padding-left: 2.25rem;
      padding-right: 2.25rem; */
-     width: 14.4rem;
-     height: 5.6rem;
+     width: 144px;
+     height: 56px;
      /* padding-top: 1rem;
      padding-bottom: 1rem; */
      font-weight: 600;
-     font-size: 1.6rem;
+     font-size: 16px;
      color: #00000054;
      cursor: pointer;
      user-select: none;
      display: inline-flex;
-     margin: 0 0.4rem;
+     margin: 0 4px;
      display: flex;
      justify-content: center;
      align-items: center;
  
+    ${props =>
+      props.hide === 'true' &&
+      css`
+        display: none;
+      `}
      ${props =>
        props.theme === 'default' &&
        css`
@@ -62,17 +68,37 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default' }) 
      ${props =>
        props.theme === 'goToNext' &&
        css`
+         width: 80px;
+         height: 50px;
          border-radius: 5px;
-         background-color: #3742fa;
-         color: #ced6e0;
+         background-color: ${palette.clearChill};
+         border: 1px solid ${palette.clearChill};
+         color: ${palette.default};
          font-weight: 500;
          padding: 0 24px;
          margin-top: 30px;
-         &:hover,
+         /* &:hover,
          &:focus {
            background: #7f8c8d;
-         }
+         } */
        `}
+       ${props =>
+         props.theme === 'goToPrev' &&
+         css`
+           width: 80px;
+           height: 50px;
+           border-radius: 5px;
+           background-color: transparent;
+           border: 1px solid ${palette.peace};
+           color: ${palette.peace};
+           font-weight: 500;
+           padding: 0 24px;
+           margin-top: 30px;
+           /* &:hover,
+         &:focus {
+           background: #7f8c8d;
+         } */
+         `}
 
   
      ${props =>
@@ -115,6 +141,7 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default' }) 
       theme={theme}
       disabled={disabled}
       onClick={disabled ? () => null : onClick}
+      hide={hide}
     >
       {children}
     </ElementBlock>

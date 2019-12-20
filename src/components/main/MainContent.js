@@ -63,7 +63,7 @@ const MainSubWord = styled.div`
   margin-top: 14px;
 `;
 const CustomButton = styled.a`
-  width: 144px;
+  width: 200px;
   height: 56px;
   border-radius: 5px;
   background-color: #3742fa;
@@ -88,7 +88,7 @@ const MainContent = () => {
         </MainBigWord>
         <MainSubWord>운동도, 관리도 내 몸에 맞게</MainSubWord>
         <CustomButton theme="goToForm" href="/consult?s=1">
-          건강 컨설팅 만나보기
+          운동/건강 컨설팅 알아보기
         </CustomButton>
       </BilateralPadding>
     </MainContentBlock>
