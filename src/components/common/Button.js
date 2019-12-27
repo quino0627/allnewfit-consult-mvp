@@ -77,10 +77,6 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
          font-weight: 500;
          padding: 0 24px;
          margin-top: 30px;
-         /* &:hover,
-         &:focus {
-           background: #7f8c8d;
-         } */
        `}
        ${props =>
          props.theme === 'goToPrev' &&

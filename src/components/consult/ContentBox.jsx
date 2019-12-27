@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import LeftBox from './LeftBox';
-import MainBox from './MainBox';
+// import MainBox from './MainBox';
+import MainBoxContainer from '../../containers/Consult/MainBoxContainer';
 
 const ContentBoxBlock = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const ContentBox = () => {
   return (
     <ContentBoxBlock>
       <LeftBox />
-      <MainBox />
+      <MainBoxContainer />
     </ContentBoxBlock>
   );
 };

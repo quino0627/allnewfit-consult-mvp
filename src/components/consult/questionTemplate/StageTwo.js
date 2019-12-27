@@ -2,13 +2,13 @@ import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
 
-const StageTwo = () => {
-  const title = '현재 운동 중이신가요?';
-  const choices = ['예', '아닙니다'];
+const StageTwo = ({ question, onChange }) => {
+  const { title, number, choices, value } = question;
+
   return (
     <div>
       <QuestionHeader title={title} />
-      <QuestionChoiceMultiple choices={choices} />
+      <QuestionChoiceMultiple choices={choices} number={number} value={value} onChange={onChange} />
     </div>
   );
 };

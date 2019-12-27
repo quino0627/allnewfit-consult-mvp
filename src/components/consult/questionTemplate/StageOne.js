@@ -8,7 +8,7 @@ const StageOne = () => {
   return (
     <div>
       <QuestionHeader title="내 몸에 맞는 운동을 찾아 보세요." />
-      <ImgWithSentence>맨</ImgWithSentence>
+      <ImgWithSentence></ImgWithSentence>
     </div>
   );
 };

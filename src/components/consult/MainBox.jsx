@@ -4,8 +4,25 @@ import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import ProgressBar from './ProgressBar';
-import Question from './Question';
+// import Question from './Question';
 import Button from '../common/Button';
+import {
+  StageOne,
+  StageTwo,
+  StageThree,
+  StageFour,
+  StageFive,
+  StageSix,
+  StageSeven,
+  StageEight,
+  StageNine,
+  StageTen,
+  StageEleven,
+  StageTwelve,
+  StageThirteen,
+  StageFourteen,
+  StageAfterLoading,
+} from './questionTemplate';
 
 const MainBoxBlock = styled.div`
   /* 650px */
@@ -24,25 +41,73 @@ const ButtonsBlock = styled.div`
   flex-direction: row-reverse;
 `;
 
+const QuestionBlock = styled.div`
+  /* margin-top: 30px; */
+`;
+const Question = ({ stage, questions, onChange }) => {
+  const renderSwitch = () => {
+    console.log(Number(stage));
+    switch (Number(stage)) {
+      case 1:
+        return <StageOne question={questions.one} onChange={onChange} />;
+      case 2:
+        return <StageTwo question={questions.two} onChange={onChange} />;
+      case 3:
+        return <StageThree question={questions.three} onChange={onChange} />;
+      case 4:
+        return <StageFour question={questions.four} onChange={onChange} />;
+      case 5:
+        return <StageFive question={questions.five} onChange={onChange} />;
+      case 6:
+        return <StageSix question={questions.six} onChange={onChange} />;
+      case 7:
+        return <StageSeven question={questions.seven} onChange={onChange} />;
+      case 8:
+        return <StageEight question={questions.eight} onChange={onChange} />;
+      case 9:
+        return <StageNine question={questions.nine} onChange={onChange} />;
+      case 10:
+        return <StageTen question={questions.ten} onChange={onChange} />;
+      case 11:
+        return <StageEleven question={questions.eleven} onChange={onChange} />;
+      case 12:
+        return <StageTwelve question={questions.twelve} onChange={onChange} />;
+      case 13:
+        return <StageThirteen question={questions.thirteen} onChange={onChange} />;
+      case 14:
+        return <StageFourteen question={questions.fourteen} onChange={onChange} />;
+      case 15:
+        return <StageAfterLoading />;
+      default:
+        return <div>기본 페이지</div>;
+    }
+  };
+
+  return <QuestionBlock>{renderSwitch()}</QuestionBlock>;
+};
+
 const buildLink = ({ stage = 1 }) => {
   // const query = queryString.stringify({ stage });
-  console.log(stage);
   return `?s=${stage}`;
 };
 
-const Buttons = ({ stage, lastStage = 15 }) => {
+const Buttons = ({ stage, lastStage }) => {
   return (
     <ButtonsBlock>
       <Button
         theme="goToNext"
-        hide={(parseInt(stage, 10) === lastStage).toString()}
-        to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) + 1 })}
+        hide={(stage === undefined).toString()}
+        to={
+          Number(stage) === lastStage
+            ? `/consult/loading`
+            : buildLink({ stage: parseInt(stage, 10) + 1 })
+        }
       >
         다음
       </Button>
       <Button
         theme="goToPrev"
-        hide={(parseInt(stage, 10) === 1).toString()}
+        hide={(parseInt(stage, 10) === 1 || stage === undefined).toString()}
         to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) - 1 })}
       >
         이전
@@ -51,13 +116,14 @@ const Buttons = ({ stage, lastStage = 15 }) => {
   );
 };
 
-const MainBox = ({ location }) => {
+const MainBox = ({ location, questions, onChange }) => {
   const { s } = queryString.parse(location.search);
   return (
     <MainBoxBlock>
-      <ProgressBar stage={s} />
-      <Question />
-      <Buttons stage={s} />
+      <ProgressBar stage={s} lastStage={Number(14)} />
+      <Question stage={s} questions={questions} onChange={onChange} />
+      {/* {JSON.stringify(questions)} */}
+      <Buttons stage={s} lastStage={Number(14)} />
     </MainBoxBlock>
   );
 };

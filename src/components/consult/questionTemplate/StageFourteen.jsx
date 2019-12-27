@@ -4,13 +4,13 @@ import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple'
 import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
 
 const StageThirteen = () => {
-  const title = '흡연을 하나요? 1주일에 몇 갑 정도 피나요?';
-  const choices = ['흡연하지 않습니다.'];
+  const title = '현재 복용중인 약이 있나요? 먹고 있다면 그 이유를 적어주세요';
+  const choices = ['약을 먹고있지 않습니다.'];
   return (
     <div>
       <QuestionHeader title={title} />
       <QuestionChoiceMultiple choices={choices} />
-      <QuestionInputBox unit="값" />
+      <QuestionInputBox long="true" />
     </div>
   );
 };

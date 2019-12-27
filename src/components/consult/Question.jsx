@@ -16,6 +16,8 @@ import {
   StageEleven,
   StageTwelve,
   StageThirteen,
+  StageFourteen,
+  StageAfterLoading,
 } from './questionTemplate';
 
 const QuestionBlock = styled.div`
@@ -24,7 +26,8 @@ const QuestionBlock = styled.div`
 const Question = ({ location }) => {
   const { s } = queryString.parse(location.search);
 
-  const renderSwitch = () => {
+  const renderSwitch = ({ questions }) => {
+    console.log(Number(s));
     switch (Number(s)) {
       case 1:
         return <StageOne />;
@@ -52,6 +55,10 @@ const Question = ({ location }) => {
         return <StageTwelve />;
       case 13:
         return <StageThirteen />;
+      case 14:
+        return <StageFourteen />;
+      case 15:
+        return <StageAfterLoading />;
       default:
         return <div>기본 페이지</div>;
     }
