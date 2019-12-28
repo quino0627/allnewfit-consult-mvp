@@ -84,30 +84,36 @@ const initialState = {
       description: '',
     },
     seven: {
-      type: 'oneQuestion',
+      type: 'oneQuestionWithInputBox',
       number: 'seven',
-      title: '성별이 어떻게 되시나요?',
-      choices: ['남성', '여성', '해당사항 없음'],
+      title: '향후 6개월동안 이루고자 하는 건강/체력상의 목표는 무엇인가요?',
       value: null,
     },
     eight: {
       type: 'oneQuestion',
       number: 'eight',
+      title: '성별이 어떻게 되시나요?',
+      choices: ['남성', '여성', '해당사항 없음'],
+      value: null,
+    },
+    nine: {
+      type: 'oneQuestion',
+      number: 'nine',
       title: '연령대가 어떻게 되시나요?',
       choices: ['10대', '20대', '30대', '40대'],
       value: null,
     },
-    nine: {
+    ten: {
       type: 'twoQuestionWithBothInputBox',
-      number: 'nine',
+      number: 'ten',
       title1: '현재 체중을 적어주세요',
       title2: '현재 키(cm)를 적어주세요',
       value1: null,
       value2: null,
     },
-    ten: {
+    eleven: {
       type: 'oneQuestionSelectManyWithDescription',
-      number: 'ten',
+      number: 'eleven',
       title: '현재 자신의 상태에 해당되는 것을 모두 클릭해 주세요.',
       choices: [
         '천식',
@@ -119,34 +125,37 @@ const initialState = {
         '관절 / 근육 질환 존재',
         '임신 / 3달 안에 출산',
       ],
-      value: null,
-    },
-    eleven: {
-      type: 'oneQuestion',
-      number: 'eleven',
-      title: '현재 운동 중이신가요?',
-      choices: ['예', '아닙니다'],
-      value: null,
+      value: [],
+      description: '',
     },
     twelve: {
-      type: 'oneQuestion',
+      type: 'oneQuestionSelectManyWithDescription',
       number: 'twelve',
-      title: '현재 운동 중이신가요?',
-      choices: ['예', '아닙니다'],
-      value: null,
+      title: '의사로부터 수치가 높다는 진단을 받은 적 있는 것을 모두 클릭해 주세요',
+      choices: ['콜레스테롤', '혈당'],
+      value: [],
+      description: '',
     },
     thirteen: {
-      type: 'oneQuestion',
+      type: 'oneQuestionWithDescription',
       number: 'thirteen',
-      title: '현재 운동 중이신가요?',
+      title: '최근 12개월 동안 부상이나 질병으로 입원했던 적이 있나요?',
       choices: ['예', '아닙니다'],
       value: null,
+      description: '',
     },
     fourteen: {
       type: 'oneQuestion',
       number: 'fourteen',
-      title: '현재 운동 중이신가요?',
-      choices: ['예', '아닙니다'],
+      title: '흡연을 하나요? 1주일에 몇 갑 정도 피나요?',
+      choices: ['흡연하지 않습니다'],
+      value: null,
+    },
+    fifteen: {
+      type: 'oneQuestionWithDescription',
+      number: 'fifteen',
+      title: '현재 복용중인 약이 있나요? 먹고 있다면 그 이유를 적어주세요',
+      choices: ['약을 먹고 있습니다', '약을 먹고있지 않습니다.'],
       value: null,
     },
   },
@@ -160,6 +169,16 @@ const question = handleActions(
         console.log(stage, field, value);
         // key는 기본적으로는 항상 "value"
         draft.questions[stage][field] = value;
+      }),
+    [CHANGE_ARRAY_VALUE]: (state, { payload: { stage, field = 'value', value } }) =>
+      produce(state, draft => {
+        console.log(stage, field, value);
+        const idx = draft.questions[stage][field].findIndex(item => item === value);
+        if (idx > -1) {
+          draft.questions[stage][field].splice(idx, 1);
+        } else {
+          draft.questions[stage][field].push(value);
+        }
       }),
   },
   initialState,

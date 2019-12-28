@@ -87,53 +87,15 @@ const Button = ({ choice, size, font, margin, start, onChange, stage, field, val
 /** choices를 배열으로 받는다.
  * ex: choices=["예", "아닙니다."] */
 
-const QuestionChoiceMultiple = ({ choices, number, value, onChange, start, all }) => {
-  if (choices.length > 8) {
-    const choices1 = choices.slice(0, choices.length / 2);
-    const choices2 = choices.slice(choices.length / 2);
-    return (
-      <ButtonsBlock>
-        <Column>
-          {choices1.map((choice, index) => {
-            return (
-              <Button
-                size={variable[`height${choices.length}`]}
-                font={variable[`font${choices.length}`]}
-                margin={variable[`margin${choices.length}`]}
-                choice={choice}
-                key={`button-${index}`}
-                start={start}
-                stage={number}
-                field="value"
-                value={choice}
-                checked={(value === choice).toString()}
-                onClick={onChange}
-              />
-            );
-          })}
-        </Column>
-        <Column>
-          {choices2.map((choice, index) => {
-            return (
-              <Button
-                size={variable[`height${choices.length}`]}
-                font={variable[`font${choices.length}`]}
-                margin={variable[`margin${choices.length}`]}
-                choice={choice}
-                key={`button-${index}`}
-                start={start}
-                stage={number}
-                field="value"
-                value={choice}
-                checked={(value === choice).toString()}
-                onClick={onChange}
-              />
-            );
-          })}
-        </Column>
-      </ButtonsBlock>
-    );
-  }
+const QuestionChoiceMultiple = ({
+  choices,
+  number,
+  value,
+  onChange,
+  onChangeArray,
+  start,
+  all,
+}) => {
   return (
     <Buttons>
       {choices.map((choice, index) => {
@@ -148,8 +110,8 @@ const QuestionChoiceMultiple = ({ choices, number, value, onChange, start, all }
             stage={number}
             field="value"
             value={choice}
-            checked={(value === choice).toString()}
-            onChange={onChange}
+            checked={all ? value.includes(choice).toString() : (value === choice).toString()}
+            onChange={all ? onChangeArray : onChange}
           />
         );
       })}

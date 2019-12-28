@@ -23,6 +23,8 @@ import {
   StageFourteen,
   StageAfterLoading,
 } from './questionTemplate';
+import StageFifteen from './questionTemplate/StageFifteen';
+import { matchNumToString, isNullOrEmpty } from '../../lib/library';
 
 const MainBoxBlock = styled.div`
   /* 650px */
@@ -44,7 +46,7 @@ const ButtonsBlock = styled.div`
 const QuestionBlock = styled.div`
   /* margin-top: 30px; */
 `;
-const Question = ({ stage, questions, onChange }) => {
+const Question = ({ stage, questions, onChange, onChangeArray }) => {
   const renderSwitch = () => {
     console.log(Number(stage));
     switch (Number(stage)) {
@@ -67,16 +69,32 @@ const Question = ({ stage, questions, onChange }) => {
       case 9:
         return <StageNine question={questions.nine} onChange={onChange} />;
       case 10:
-        return <StageTen question={questions.ten} onChange={onChange} />;
+        return (
+          <StageTen question={questions.ten} onChange={onChange} onChangeArray={onChangeArray} />
+        );
       case 11:
-        return <StageEleven question={questions.eleven} onChange={onChange} />;
+        return (
+          <StageEleven
+            question={questions.eleven}
+            onChange={onChange}
+            onChangeArray={onChangeArray}
+          />
+        );
       case 12:
-        return <StageTwelve question={questions.twelve} onChange={onChange} />;
+        return (
+          <StageTwelve
+            question={questions.twelve}
+            onChange={onChange}
+            onChangeArray={onChangeArray}
+          />
+        );
       case 13:
         return <StageThirteen question={questions.thirteen} onChange={onChange} />;
       case 14:
         return <StageFourteen question={questions.fourteen} onChange={onChange} />;
       case 15:
+        return <StageFifteen question={questions.fifteen} onChange={onChange} />;
+      case 16:
         return <StageAfterLoading />;
       default:
         return <div>기본 페이지</div>;
@@ -91,39 +109,70 @@ const buildLink = ({ stage = 1 }) => {
   return `?s=${stage}`;
 };
 
-const Buttons = ({ stage, lastStage }) => {
+const Buttons = ({ stage, lastStage, questions }) => {
+  const checkIsDisable = () => {
+    const value1 = questions[matchNumToString(Number(stage))].value;
+    const value2 = questions[matchNumToString(Number(stage))].value1;
+    const value3 = questions[matchNumToString(Number(stage))].value2;
+
+    if (Number(stage) === Number(1)) {
+      return false;
+    }
+    // value1과  value2, value3는 함께 쓰이지 않음
+    if (value2 === undefined && value3 === undefined) {
+      // 만약 value만 쓰인다면, value가 null or empty인지 확인한다.
+      if (isNullOrEmpty(value1)) {
+        // null or empty라면 return true
+        return true;
+      }
+      // 그렇지 않다면 return false
+      return false;
+    }
+    // value가 쓰이지 않는다면 value1과 value2에 대해서 null or empty 검사
+    if (isNullOrEmpty(value2) || isNullOrEmpty(value3)) {
+      return true;
+    }
+
+    return false;
+    // if(isNullOrEmpty(value1) || isNullOrEmpty(value2) || isNullOrEmpty(value3))
+  };
   return (
     <ButtonsBlock>
-      <Button
-        theme="goToNext"
-        hide={(stage === undefined).toString()}
-        to={
-          Number(stage) === lastStage
-            ? `/consult/loading`
-            : buildLink({ stage: parseInt(stage, 10) + 1 })
-        }
-      >
-        다음
-      </Button>
-      <Button
-        theme="goToPrev"
-        hide={(parseInt(stage, 10) === 1 || stage === undefined).toString()}
-        to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) - 1 })}
-      >
-        이전
-      </Button>
+      {Number(stage) !== Number(lastStage) && (
+        <>
+          <Button
+            theme="goToNext"
+            hide={(stage === undefined).toString()}
+            disabled={checkIsDisable()}
+            to={
+              Number(stage) === lastStage
+                ? `/consult/loading`
+                : buildLink({ stage: parseInt(stage, 10) + 1 })
+            }
+          >
+            다음
+          </Button>
+          <Button
+            theme="goToPrev"
+            hide={(parseInt(stage, 10) === 1 || stage === undefined).toString()}
+            to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) - 1 })}
+          >
+            이전{checkIsDisable()}
+          </Button>
+        </>
+      )}
     </ButtonsBlock>
   );
 };
 
-const MainBox = ({ location, questions, onChange }) => {
+const MainBox = ({ location, questions, onChange, onChangeArray }) => {
   const { s } = queryString.parse(location.search);
   return (
     <MainBoxBlock>
-      <ProgressBar stage={s} lastStage={Number(14)} />
-      <Question stage={s} questions={questions} onChange={onChange} />
+      <ProgressBar stage={s} lastStage={Number(16)} />
+      <Question stage={s} questions={questions} onChange={onChange} onChangeArray={onChangeArray} />
       {/* {JSON.stringify(questions)} */}
-      <Buttons stage={s} lastStage={Number(14)} />
+      <Buttons stage={s} questions={questions} lastStage={Number(16)} />
     </MainBoxBlock>
   );
 };

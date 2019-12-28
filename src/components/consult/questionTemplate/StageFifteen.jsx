@@ -1,9 +1,10 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
+import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
 import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox';
 
-const StageThirteen = ({ question, onChange }) => {
+const StageFifteen = ({ question, onChange }) => {
   const { type, title, number, choices, value, description } = question;
   return (
     <div>
@@ -21,4 +22,4 @@ const StageThirteen = ({ question, onChange }) => {
   );
 };
 
-export default StageThirteen;
+export default StageFifteen;

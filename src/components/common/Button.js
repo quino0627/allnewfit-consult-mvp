@@ -40,7 +40,7 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
      display: flex;
      justify-content: center;
      align-items: center;
- 
+  
     ${props =>
       props.hide === 'true' &&
       css`
@@ -125,7 +125,14 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
            border: 0.1rem solid #f84444;
          }
        `}
-     
+       ${props =>
+         props.disabled === true &&
+         css`
+           cursor: not-allowed;
+           background-color: transparent;
+           border: 1px solid ${palette.peace};
+           color: ${palette.peace};
+         `}
  
      
    `;

@@ -7,12 +7,6 @@ const InputBoxBlock = styled.div`
   width: 90%;
   color: ${palette.clearChill};
   font-size: 24px;
-
-  ${props =>
-    props.show !== 'true' &&
-    css`
-      display: none;
-    `}
 `;
 
 const InputBlock = styled.textarea`
@@ -27,9 +21,9 @@ const InputBlock = styled.textarea`
 `;
 
 //
-const QuestionDescriptionBox = ({ number, onChange, value, description, long }) => {
+const QuestionTextareaBox = ({ number, onChange, value, description, long }) => {
   return (
-    <InputBoxBlock show={(value !== null && value.length !== 0).toString()}>
+    <InputBoxBlock>
       <InputBlock
         type="text"
         long={long}
@@ -41,4 +35,4 @@ const QuestionDescriptionBox = ({ number, onChange, value, description, long }) 
   );
 };
 
-export default QuestionDescriptionBox;
+export default QuestionTextareaBox;

@@ -3,16 +3,16 @@ import QuestionHeader from '../QuestionComponent/QuestionHeader';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
 import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
 
-const StageThirteen = () => {
-  const title = '현재 복용중인 약이 있나요? 먹고 있다면 그 이유를 적어주세요';
-  const choices = ['약을 먹고있지 않습니다.'];
+const StageFourteen = ({ question, onChange }) => {
+  const { type, choices, title, number, value } = question;
+
   return (
     <div>
       <QuestionHeader title={title} />
-      <QuestionChoiceMultiple choices={choices} />
-      <QuestionInputBox long="true" />
+      <QuestionChoiceMultiple number={number} choices={choices} onChange={onChange} value={value} />
+      <QuestionInputBox unit="값" number={number} value={value} onChange={onChange} />
     </div>
   );
 };
 
-export default StageThirteen;
+export default StageFourteen;

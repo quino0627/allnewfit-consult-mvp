@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeValue, initialize } from '../../modules/question';
+import { changeValue, changeArrayValue, initialize } from '../../modules/question';
 import MainBox from '../../components/consult/MainBox';
 
 const MainBoxContainer = () => {
@@ -10,10 +10,13 @@ const MainBoxContainer = () => {
   }));
 
   const onChange = ({ stage, field, value }) => {
-    console.log(stage, field, value);
     dispatch(changeValue({ stage, field, value }));
   };
-  return <MainBox questions={questions} onChange={onChange} />;
+
+  const onChangeArray = ({ stage, field, value }) => {
+    dispatch(changeArrayValue({ stage, field, value }));
+  };
+  return <MainBox questions={questions} onChange={onChange} onChangeArray={onChangeArray} />;
 };
 
 export default MainBoxContainer;

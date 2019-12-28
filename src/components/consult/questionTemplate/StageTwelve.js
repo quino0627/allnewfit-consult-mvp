@@ -1,15 +1,29 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
+import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox';
 
-const StageTwelve = () => {
-  const title =
-    '최근 12개월 동안 부상이나 질병으로 입원했던 적이 있나요? 상세 기술 textarea 만들어야 함';
-  const choices = ['네', '아닙니다.'];
+const StageTwelve = ({ question, onChange, onChangeArray }) => {
+  const { type, title, number, choices, value, description } = question;
   return (
     <div>
       <QuestionHeader title={title} />
-      <QuestionChoiceMultiple choices={choices} />
+      <QuestionChoiceMultiple
+        choices={choices}
+        number={number}
+        value={value}
+        onChange={onChange}
+        onChangeArray={onChangeArray}
+        all
+      />
+      {type === 'oneQuestionSelectManyWithDescription' && (
+        <QuestionDescriptionBox
+          number={number}
+          onChange={onChange}
+          value={value}
+          description={description}
+        />
+      )}
     </div>
   );
 };
