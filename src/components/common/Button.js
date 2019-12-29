@@ -21,7 +21,7 @@ const Div = ({ children, ...rest }) => <div {...rest}>{children}</div>;
  *  disabled는 boolean값을 가집니다. true이면 버튼 비활성화
  * theme은 버튼 색깔을 바꿉니다.
  */
-const Button = ({ children, to, onClick, disabled = false, theme = 'default', hide = 'true' }) => {
+const Button = ({ children, to, onClick, disabled = false, theme = 'default', hide }) => {
   const Element = to && !disabled ? Link : Div;
   const ElementBlock = styled(Element)`
      /* padding-left: 2.25rem;

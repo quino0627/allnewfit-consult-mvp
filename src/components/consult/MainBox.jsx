@@ -25,6 +25,7 @@ import {
 } from './questionTemplate';
 import StageFifteen from './questionTemplate/StageFifteen';
 import { matchNumToString, isNullOrEmpty } from '../../lib/library';
+import StageSixteen from './questionTemplate/StageSixteen';
 
 const MainBoxBlock = styled.div`
   /* 650px */
@@ -95,7 +96,7 @@ const Question = ({ stage, questions, onChange, onChangeArray }) => {
       case 15:
         return <StageFifteen question={questions.fifteen} onChange={onChange} />;
       case 16:
-        return <StageAfterLoading />;
+        return <StageSixteen question={questions.sixteen} onChange={onChange} />;
       default:
         return <div>기본 페이지</div>;
     }
@@ -138,7 +139,7 @@ const Buttons = ({ stage, lastStage, questions }) => {
   };
   return (
     <ButtonsBlock>
-      {Number(stage) !== Number(lastStage) && (
+      {Number(stage) && (
         <>
           <Button
             theme="goToNext"
@@ -154,10 +155,10 @@ const Buttons = ({ stage, lastStage, questions }) => {
           </Button>
           <Button
             theme="goToPrev"
-            hide={(parseInt(stage, 10) === 1 || stage === undefined).toString()}
-            to={stage === lastStage ? undefined : buildLink({ stage: parseInt(stage, 10) - 1 })}
+            hide={(parseInt(stage, 10) === 1).toString()}
+            to={buildLink({ stage: parseInt(stage, 10) - 1 })}
           >
-            이전{checkIsDisable()}
+            이전
           </Button>
         </>
       )}

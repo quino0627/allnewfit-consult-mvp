@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+import ProgressBarContainer from '../../../containers/Common/ProgressBarContainer';
 
 const StageAfterLoading = () => {
-  return <div>로딩중</div>;
+  return <ProgressBarContainer />;
 };
 
 export default StageAfterLoading;

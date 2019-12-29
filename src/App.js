@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 // import { device } from 'styles/device';
 
 // pages
-import { MainPage, NotFoundPage } from './pages';
+import { MainPage, NotFoundPage, ConsultLoadingPage, CheckoutPage } from './pages';
 import ConsultPage from './pages/ConsultPage';
 
 const GlobalStyle = createGlobalStyle`
@@ -72,7 +72,9 @@ const App = ({ match }) => {
       <GlobalStyle />
       <Switch>
         <Route exact path="/" component={MainPage} />
+        <Route path="/consult/loading" component={ConsultLoadingPage} />
         <Route path="/consult" component={ConsultPage} />
+        <Route path="/checkout" component={CheckoutPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>

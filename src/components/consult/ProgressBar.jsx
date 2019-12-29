@@ -21,7 +21,7 @@ const InsideLine = styled.div`
 
 const ProgressBar = ({ stage, lastStage }) => {
   return (
-    <ProgressBarBlock>
+    <ProgressBarBlock stage={Number(stage)} lastStage={lastStage}>
       <InsideLine progress={`${(Number(stage) / Number(lastStage)) * 100}%`} />
     </ProgressBarBlock>
   );

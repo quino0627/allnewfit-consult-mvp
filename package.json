@@ -26,6 +26,7 @@
     "rc-slider": "^8.7.1",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.2",
+    "react-circular-progressbar": "^2.0.3",
     "react-countup": "^4.2.3",
     "react-dom": "^16.8.6",
     "react-faux-dom": "^4.5.0",

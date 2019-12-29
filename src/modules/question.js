@@ -158,21 +158,25 @@ const initialState = {
       choices: ['약을 먹고 있습니다', '약을 먹고있지 않습니다.'],
       value: null,
     },
+    sixteen: {
+      type: 'oneQuestionWithInputBox',
+      number: 'sixteen',
+      title: '카카오 아이디를 남겨주시면 컨설팅 레포트가 전달됩니다.',
+      value: null,
+    },
   },
 };
 
 const question = handleActions(
   {
-    [INITIALIZE]: state => initialState,
+    [INITIALIZE]: () => initialState,
     [CHANGE_VALUE]: (state, { payload: { stage, field = 'value', value } }) =>
       produce(state, draft => {
-        console.log(stage, field, value);
         // key는 기본적으로는 항상 "value"
         draft.questions[stage][field] = value;
       }),
     [CHANGE_ARRAY_VALUE]: (state, { payload: { stage, field = 'value', value } }) =>
       produce(state, draft => {
-        console.log(stage, field, value);
         const idx = draft.questions[stage][field].findIndex(item => item === value);
         if (idx > -1) {
           draft.questions[stage][field].splice(idx, 1);
