@@ -95,6 +95,23 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
            background: #7f8c8d;
          } */
          `}
+         ${props =>
+           props.theme === 'checkoutSubmit' &&
+           css`
+             width: 80px;
+             height: 50px;
+             border-radius: 5px;
+             background-color: ${palette.clearChill};
+
+             color: ${palette.default};
+             font-weight: 500;
+             padding: 0 24px;
+             margin: 0 auto;
+             /* &:hover,
+         &:focus {
+           background: #7f8c8d;
+         } */
+           `}
 
   
      ${props =>

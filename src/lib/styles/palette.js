@@ -30,6 +30,8 @@ const palette = {
   clearChill: '#1e90ff',
   peace: '#a4b0be',
   prestigeBlue: '#2f3542',
+  grisaille: '#57606f',
+  watermelon: '#ff4757',
   default: '#f1f2f6',
 };
 
