@@ -1,7 +1,8 @@
 import React from 'react';
+import CheckoutPageWrapper from '../components/checkout/CheckoutPageWrapper';
 
 const CheckoutPage = () => {
-  return <div>asdf</div>;
+  return <CheckoutPageWrapper>asdf</CheckoutPageWrapper>;
 };
 
 export default CheckoutPage;

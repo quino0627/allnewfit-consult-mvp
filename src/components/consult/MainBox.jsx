@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import queryString from 'query-string';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import ProgressBar from './ProgressBar';
 // import Question from './Question';
@@ -49,7 +49,6 @@ const QuestionBlock = styled.div`
 `;
 const Question = ({ stage, questions, onChange, onChangeArray }) => {
   const renderSwitch = () => {
-    console.log(Number(stage));
     switch (Number(stage)) {
       case 1:
         return <StageOne question={questions.one} onChange={onChange} />;
@@ -98,7 +97,7 @@ const Question = ({ stage, questions, onChange, onChangeArray }) => {
       case 16:
         return <StageSixteen question={questions.sixteen} onChange={onChange} />;
       default:
-        return <div>기본 페이지</div>;
+        return <Redirect to="/consult?s=1" />;
     }
   };
 
@@ -168,12 +167,16 @@ const Buttons = ({ stage, lastStage, questions }) => {
 
 const MainBox = ({ location, questions, onChange, onChangeArray }) => {
   const { s } = queryString.parse(location.search);
+  const lastStage = Number(16);
+  if (Number(s) > lastStage) {
+    return <Redirect to="/consult?s=1" />;
+  }
   return (
     <MainBoxBlock>
-      <ProgressBar stage={s} lastStage={Number(16)} />
+      <ProgressBar stage={s} lastStage={lastStage} />
       <Question stage={s} questions={questions} onChange={onChange} onChangeArray={onChangeArray} />
       {/* {JSON.stringify(questions)} */}
-      <Buttons stage={s} questions={questions} lastStage={Number(16)} />
+      <Buttons stage={s} questions={questions} lastStage={lastStage} />
     </MainBoxBlock>
   );
 };

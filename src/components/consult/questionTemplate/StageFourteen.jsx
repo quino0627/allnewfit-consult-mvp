@@ -10,7 +10,6 @@ const StageFourteen = ({ question, onChange }) => {
     <div>
       <QuestionHeader title={title} />
       <QuestionChoiceMultiple number={number} choices={choices} onChange={onChange} value={value} />
-      <QuestionInputBox unit="값" number={number} value={value} onChange={onChange} />
     </div>
   );
 };

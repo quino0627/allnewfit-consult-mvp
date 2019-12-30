@@ -29,7 +29,7 @@ const InputBlock = styled.textarea`
 //
 const QuestionOtherInputBox = ({ number, onChange, value, description, long }) => {
   return (
-    <InputBoxBlock show={(value === '기타').toString()}>
+    <InputBoxBlock show={(value === '기타' || value === '해당사항 없음').toString()}>
       <InputBlock
         type="text"
         long={long}

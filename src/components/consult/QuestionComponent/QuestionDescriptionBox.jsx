@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../lib/styles/palette';
+import { isNullOrEmpty } from '../../../lib/library';
 
 const InputBoxBlock = styled.div`
   display: inline-flex;
@@ -28,8 +29,14 @@ const InputBlock = styled.textarea`
 
 //
 const QuestionDescriptionBox = ({ number, onChange, value, description, long }) => {
+  console.log((!isNullOrEmpty(value)).toString());
+  console.log((value !== '해당사항 없음').toString());
+  console.log(typeof value);
   return (
-    <InputBoxBlock show={(value !== null && value.length !== 0).toString()}>
+    <InputBoxBlock
+      // nullorempty가 아니거나, value가 해당사항 없음이 아닐 경우 return "true"
+      show={(!isNullOrEmpty(value)).toString() || (value !== '해당사항 없음').toString()}
+    >
       <InputBlock
         type="text"
         long={long}

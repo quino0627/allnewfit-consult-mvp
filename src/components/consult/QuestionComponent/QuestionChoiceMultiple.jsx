@@ -18,14 +18,14 @@ const Column = styled.div`
   width: 50%;
 `;
 const Buttons = ({ length, children }) => {
-  if (length > 8) {
-    return (
-      <ButtonsBlock>
-        <Column>{children}</Column>
-        <Column>zxcv</Column>
-      </ButtonsBlock>
-    );
-  }
+  // if (length > 8) {
+  //   return (
+  //     <ButtonsBlock>
+  //       <Column>{children}</Column>
+  //       <Column>zxcv</Column>
+  //     </ButtonsBlock>
+  //   );
+  // }
   return <div>{children}</div>;
 };
 

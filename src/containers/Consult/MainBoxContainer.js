@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
 import { changeValue, changeArrayValue, initialize } from '../../modules/question';
 import MainBox from '../../components/consult/MainBox';
+import { isNullOrEmpty } from '../../lib/library';
 
-const MainBoxContainer = () => {
+const MainBoxContainer = ({ location, history }) => {
+  const { s } = queryString.parse(location.search);
   const dispatch = useDispatch();
   const { questions } = useSelector(({ question }) => ({
     questions: question.questions,
@@ -16,7 +20,17 @@ const MainBoxContainer = () => {
   const onChangeArray = ({ stage, field, value }) => {
     dispatch(changeArrayValue({ stage, field, value }));
   };
+
+  useEffect(() => {
+    console.log(questions);
+    console.log(`${Number(s)}이다`);
+    // 첫번째 페이지가 아니고, 퀘스쳔1이 널이나 엠티이면
+    if (Number(s) !== 1 && isNullOrEmpty(questions.one.value)) {
+      history.push('/consult?s=1');
+    }
+  }, []);
+
   return <MainBox questions={questions} onChange={onChange} onChangeArray={onChangeArray} />;
 };
 
-export default MainBoxContainer;
+export default withRouter(MainBoxContainer);
