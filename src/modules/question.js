@@ -159,8 +159,8 @@ const initialState = {
     fourteen: {
       type: 'oneQuestion',
       number: 'fourteen',
-      title: '흡연을 하나요? 1주일에 몇 갑 정도 피나요?',
-      choices: ['흡연하지 않습니다', '1~2갑', '3~4갑', '그 이상'],
+      title: '흡연을 하나요? 하루에 몇 갑 정도 피나요?',
+      choices: ['흡연하지 않습니다', '1갑 이하', '1~2갑', '3~4갑', '그 이상'],
       value: null,
     },
     fifteen: {

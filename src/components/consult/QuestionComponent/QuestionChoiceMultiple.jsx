@@ -32,11 +32,13 @@ const ButtonBlock = styled.div`
   font-weight: 400;
   color: ${palette.clearChill};
   cursor: pointer;
-  &:hover,
-  &:focus {
-    background: ${palette.clearChill};
-    color: ${palette.default};
+  @media (min-width: 961px) {
+    &:hover {
+      background: ${palette.clearChill};
+      color: ${palette.default};
+    }
   }
+
   ${props =>
     props.checked === 'true' &&
     css`
