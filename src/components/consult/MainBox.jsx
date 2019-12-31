@@ -28,20 +28,31 @@ import { matchNumToString, isNullOrEmpty } from '../../lib/library';
 import StageSixteen from './questionTemplate/StageSixteen';
 
 const MainBoxBlock = styled.div`
-  /* 650px */
-  width: 550px;
-  background-color: ${palette.default};
-  margin: 0 20px 0 50px;
-  padding: 50px 10px 50px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  @media (min-width: 961px) {
+    /* 650px */
+    width: 550px;
+    background-color: ${palette.default};
+    margin: 0 20px 0 50px;
+    padding: 50px 10px 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  @media (max-width: 960px) {
+    padding: 50px 20px;
+    height: 75vh;
+  }
 `;
 
 const ButtonsBlock = styled.div`
   height: 50px;
   display: flex;
   flex-direction: row-reverse;
+  @media (min-width: 961px) {
+  }
+  @media (max-width: 960px) {
+    justify-content: center;
+  }
 `;
 
 const QuestionBlock = styled.div`

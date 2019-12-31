@@ -5,28 +5,14 @@ import styled, { css } from 'styled-components';
 import palette from '../../../lib/styles/palette';
 import variable from '../../../lib/styles/variable';
 
-const ButtonsBlock = styled.div`
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-`;
+const ButtonsBlock = styled.div``;
 
 const Column = styled.div`
   float: left;
   width: 50%;
 `;
 const Buttons = ({ length, children }) => {
-  // if (length > 8) {
-  //   return (
-  //     <ButtonsBlock>
-  //       <Column>{children}</Column>
-  //       <Column>zxcv</Column>
-  //     </ButtonsBlock>
-  //   );
-  // }
-  return <div>{children}</div>;
+  return <ButtonsBlock>{children}</ButtonsBlock>;
 };
 
 const ButtonBlock = styled.div`
@@ -64,6 +50,10 @@ const ButtonBlock = styled.div`
       padding-left: 10px;
       font-size: ${variable.longFont};
     `}
+    @media (max-width: 960px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const Button = ({ choice, size, font, margin, start, onChange, stage, field, value, ...rest }) => {

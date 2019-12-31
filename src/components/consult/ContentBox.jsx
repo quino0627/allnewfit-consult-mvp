@@ -6,12 +6,18 @@ import LeftBox from './LeftBox';
 import MainBoxContainer from '../../containers/Consult/MainBoxContainer';
 
 const ContentBoxBlock = styled.div`
-  display: flex;
-  width: 900px;
-  height: 636px;
   background: ${palette.default};
-  margin: 0 auto;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+  @media (min-width: 961px) {
+    flex-direction: row;
+    width: 900px;
+    height: 636px;
+    margin: 0 auto;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `;
 
 const ContentBox = () => {

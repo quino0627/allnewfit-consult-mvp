@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
-import { changeValue, changeArrayValue, initialize } from '../../modules/question';
+import { changeQuestionValue, changeArrayValue, initialize } from '../../modules/question';
 import MainBox from '../../components/consult/MainBox';
 import { isNullOrEmpty } from '../../lib/library';
 
@@ -14,7 +14,7 @@ const MainBoxContainer = ({ location, history }) => {
   }));
 
   const onChange = ({ stage, field, value }) => {
-    dispatch(changeValue({ stage, field, value }));
+    dispatch(changeQuestionValue({ stage, field, value }));
   };
 
   const onChangeArray = ({ stage, field, value }) => {

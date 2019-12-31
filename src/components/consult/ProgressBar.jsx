@@ -3,10 +3,16 @@ import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
 
 const ProgressBarBlock = styled.div`
-  width: 400px;
   height: 10px;
   background-color: ${palette.cityLights};
   border-radius: 5px;
+  @media (min-width: 961px) {
+    width: 400px;
+  }
+  @media (max-width: 960px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 `;
 
 const InsideLine = styled.div`

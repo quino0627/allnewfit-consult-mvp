@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../../lib/styles/palette';
+import { textareaPlaceholder } from '../../../lib/sentences';
 
 const InputBoxBlock = styled.div`
   display: inline-flex;
@@ -27,7 +28,7 @@ const QuestionTextareaBox = ({ number, onChange, value, description, long, place
       <InputBlock
         type="text"
         long={long}
-        placeholder={placeholder || '더 상세하게 적어주시면 상황에 더 맞는 피드백이 됩니다 :)'}
+        placeholder={placeholder || textareaPlaceholder}
         value={description}
         onChange={e => onChange({ stage: number, field: 'value', value: e.target.value })}
       />

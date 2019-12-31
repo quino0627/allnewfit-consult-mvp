@@ -33,8 +33,8 @@ const ProgressBarContainer = ({ history }) => {
 
   useEffect(() => {
     if (percent === 100) {
-      setTimeout(() => history.push('/checkout'), 2000);
       localStorage.setItem('questions', JSON.stringify(questions));
+      setTimeout(() => history.push('/checkout'), 2000);
     }
   }, [history, percent, questions]);
 

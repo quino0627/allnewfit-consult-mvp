@@ -8,7 +8,7 @@ const HeaderBlock = styled.header`
   width: 100%;
   height: 80px;
   z-index: 100;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   margin-top: 0;
   background-color: ${props => palette[props.color]};

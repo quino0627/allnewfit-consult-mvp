@@ -4,7 +4,6 @@ import BilateralPadding from '../common/BilateralPadding';
 import Button from '../common/Button';
 
 const MainContentBlock = styled.div`
-  margin-top: 80px;
   /* background: blue; */
   box-sizing: border-box;
   height: calc(100vh - 80px);

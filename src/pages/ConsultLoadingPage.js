@@ -6,7 +6,6 @@ import ProgressBarContainer from '../containers/Common/ProgressBarContainer';
 const ConsultPage = () => {
   return (
     <ConsultLoadingPageWrapper>
-      <Header color="white" />
       <ProgressBarContainer />
     </ConsultLoadingPageWrapper>
   );

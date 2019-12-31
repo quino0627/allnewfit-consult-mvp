@@ -54,26 +54,30 @@ const InputBlock = styled.input`
   height: 32px;
   font-size: 14px;
   background: transparent;
+  border-radius: 0;
   border-bottom: 2px solid ${palette.clearChill};
   &:focus {
     outline: none;
   }
 `;
 
-const InputCheckoutData = () => {
+const InputCheckoutData = ({ name, email, phone, onChangeInputValue }) => {
+  const onChangeValue = e => {
+    onChangeInputValue({ field: e.target.name, value: e.target.value });
+  };
   return (
     <section>
       <InnerBox color="default">
-        <Descriptionsentence>올뉴핏 운동/건강 컨설팅 프로그램</Descriptionsentence>
+        <Descriptionsentence>프로그램 신청 마지막 단계</Descriptionsentence>
 
         <InputDescriptionSentence necessory>이름</InputDescriptionSentence>
-        <InputBlock type="text" />
+        <InputBlock type="text" onChange={onChangeValue} name="name" value={name} />
 
         <InputDescriptionSentence necessory>전화번호</InputDescriptionSentence>
-        <InputBlock type="phone" />
+        <InputBlock type="number" onChange={onChangeValue} name="phone" />
 
         <InputDescriptionSentence>이메일</InputDescriptionSentence>
-        <InputBlock type="text" />
+        <InputBlock type="text" onChange={onChangeValue} name="emial" />
 
         <Button theme="checkoutSubmit">제출하기</Button>
       </InnerBox>

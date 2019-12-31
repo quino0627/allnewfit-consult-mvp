@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import InnerBox from './InnerBox';
 import palette from '../../lib/styles/palette';
 
@@ -12,6 +12,16 @@ const HeaderSentence = styled.div`
 const Descriptionsentence = styled.div`
   font-size: 18px;
   color: ${palette.default};
+  ${props =>
+    props.center &&
+    css`
+      text-align: center;
+    `}
+  ${props =>
+    props.bold &&
+    css`
+      font-weight: bold;
+    `}
   margin-bottom: 6px;
 `;
 
@@ -26,13 +36,20 @@ const Introduction = () => {
         </HeaderSentence>
         <br />
         <br />
-        <Descriptionsentence>운동 목적 : </Descriptionsentence>
+        <Descriptionsentence>운동 목적 :</Descriptionsentence>
         <Descriptionsentence>건강 목표 :</Descriptionsentence>
         <Descriptionsentence>일주일 2~3회, 피트니스 센터</Descriptionsentence>
+        <Descriptionsentence>회원님에게 적합한 루틴을 디자인합니다.</Descriptionsentence>
         <br />
         <br />
-        <Descriptionsentence>
-          아래의 항목을 제출하시면 자세한 안내를 진행드립니다.
+        <Descriptionsentence center bold>
+          1. 아래 항목을 작성하여 제출하시고
+        </Descriptionsentence>
+        <Descriptionsentence center bold>
+          2. 올뉴핏 카카오톡 채널을 추가해주세요
+        </Descriptionsentence>
+        <Descriptionsentence center bold>
+          3. 올뉴핏 채팅방에 제출한 이름(이메일)을 보내주세요
         </Descriptionsentence>
       </InnerBox>
     </section>

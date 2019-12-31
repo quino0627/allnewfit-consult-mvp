@@ -6,7 +6,7 @@ import ContentBox from '../components/consult/ContentBox';
 const ConsultPage = () => {
   return (
     <ConsultPageWrapper>
-      <Header color="white" />
+      {/* <Header color="white" /> */}
       <ContentBox />
     </ConsultPageWrapper>
   );

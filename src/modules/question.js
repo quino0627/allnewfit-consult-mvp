@@ -5,15 +5,23 @@ import { takeLatest } from 'redux-saga/effects';
 import { produce } from 'immer';
 
 const INITIALIZE = 'question/INITIALIZE';
-const CHANGE_VALUE = 'question/CHANGE_VALUE';
+const CHANGE_INPUT_VALUE = 'question/CHANGE_INPUT/VALUE';
+const CHANGE_QUESTION_VALUE = 'question/CHANGE_VALUE';
 const CHANGE_ARRAY_VALUE = 'question/CHANGE_ARRAY_VALUE';
 
 export const initialize = createAction(INITIALIZE);
-export const changeValue = createAction(CHANGE_VALUE, ({ stage, field, value }) => ({
-  stage,
+export const changeInputValue = createAction(CHANGE_INPUT_VALUE, ({ field, value }) => ({
   field,
   value,
 }));
+export const changeQuestionValue = createAction(
+  CHANGE_QUESTION_VALUE,
+  ({ stage, field, value }) => ({
+    stage,
+    field,
+    value,
+  }),
+);
 export const changeArrayValue = createAction(CHANGE_ARRAY_VALUE, ({ stage, field, value }) => ({
   stage,
   field,
@@ -21,6 +29,9 @@ export const changeArrayValue = createAction(CHANGE_ARRAY_VALUE, ({ stage, field
 }));
 
 const initialState = {
+  name: null,
+  emial: null,
+  phone: null,
   // StageOne은 Introduce이므로 value가 필요없음
   questions: {
     one: {
@@ -71,7 +82,7 @@ const initialState = {
     six: {
       type: 'oneQuestionWithDescription',
       number: 'six',
-      title: '운동을 하고자 하는 이유가 무엇인가요?',
+      title: '운동을 하고자 하는 주된 이유가 무엇인가요?',
       choices: [
         '체지방 감소',
         '근력 / 근육 크기 증가',
@@ -171,7 +182,11 @@ const initialState = {
 const question = handleActions(
   {
     [INITIALIZE]: () => initialState,
-    [CHANGE_VALUE]: (state, { payload: { stage, field = 'value', value } }) =>
+    [CHANGE_INPUT_VALUE]: (state, { payload: { field, value } }) =>
+      produce(state, draft => {
+        draft[field] = value;
+      }),
+    [CHANGE_QUESTION_VALUE]: (state, { payload: { stage, field = 'value', value } }) =>
       produce(state, draft => {
         // key는 기본적으로는 항상 "value"
         draft.questions[stage][field] = value;
