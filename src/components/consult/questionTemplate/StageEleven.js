@@ -1,31 +1,28 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
-import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
-import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox';
+import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
 
 const StageEleven = ({ question, onChange, onChangeArray }) => {
-  const { type, title, number, choices, value, description } = question;
+  const { type, title1, title2, number, value1, value2 } = question;
 
   return (
     <div>
-      <QuestionHeader title={title} />
-      {/* start는 긴 문장이 있을 경우 */}
-      <QuestionChoiceMultiple
-        choices={choices}
+      <QuestionHeader title={title1} />
+      <QuestionInputBox
+        unit="kg"
         number={number}
-        value={value}
+        field="value1"
+        value={value1}
         onChange={onChange}
-        onChangeArray={onChangeArray}
-        all
       />
-      {type === 'oneQuestionSelectManyWithDescription' && (
-        <QuestionDescriptionBox
-          number={number}
-          onChange={onChange}
-          value={value}
-          description={description}
-        />
-      )}
+      <QuestionHeader title={title2} />
+      <QuestionInputBox
+        unit="cm"
+        number={number}
+        field="value2"
+        value={value2}
+        onChange={onChange}
+      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
-import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
 import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox';
 

@@ -1,28 +1,13 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
-import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
+import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
 
 const StageTen = ({ question, onChange }) => {
-  const { type, title1, title2, number, value1, value2 } = question;
-
+  const { title, number, choices, value } = question;
   return (
     <div>
-      <QuestionHeader title={title1} />
-      <QuestionInputBox
-        unit="kg"
-        number={number}
-        field="value1"
-        value={value1}
-        onChange={onChange}
-      />
-      <QuestionHeader title={title2} />
-      <QuestionInputBox
-        unit="cm"
-        number={number}
-        field="value2"
-        value={value2}
-        onChange={onChange}
-      />
+      <QuestionHeader title={title} />
+      <QuestionChoiceMultiple choices={choices} number={number} value={value} onChange={onChange} />
     </div>
   );
 };

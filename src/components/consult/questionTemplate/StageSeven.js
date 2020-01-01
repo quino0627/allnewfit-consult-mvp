@@ -1,15 +1,22 @@
 import React from 'react';
 import QuestionHeader from '../QuestionComponent/QuestionHeader';
 import QuestionChoiceMultiple from '../QuestionComponent/QuestionChoiceMultiple';
-import QuestionInputBox from '../QuestionComponent/QuestionInputBox';
-import QuestionTextareaBox from '../QuestionComponent/QuestionTextareaBox';
+import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox';
 
 const StageSeven = ({ question, onChange }) => {
-  const { title, number, choices, value } = question;
+  const { type, title, number, choices, value, description } = question;
   return (
     <div>
       <QuestionHeader title={title} />
-      <QuestionTextareaBox number={number} field="value" value={value} onChange={onChange} />
+      <QuestionChoiceMultiple choices={choices} number={number} value={value} onChange={onChange} />
+      {type === 'oneQuestionWithDescription' && (
+        <QuestionDescriptionBox
+          number={number}
+          onChange={onChange}
+          value={value}
+          description={description}
+        />
+      )}
     </div>
   );
 };

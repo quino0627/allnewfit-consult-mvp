@@ -5,9 +5,11 @@ import QuestionDescriptionBox from '../QuestionComponent/QuestionDescriptionBox'
 
 const StageTwelve = ({ question, onChange, onChangeArray }) => {
   const { type, title, number, choices, value, description } = question;
+
   return (
     <div>
       <QuestionHeader title={title} />
+      {/* start는 긴 문장이 있을 경우 */}
       <QuestionChoiceMultiple
         choices={choices}
         number={number}

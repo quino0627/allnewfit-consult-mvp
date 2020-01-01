@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import InnerBox from './InnerBox';
 import palette from '../../lib/styles/palette';
+import { isNullOrEmpty } from '../../lib/library';
 
 const HeaderSentence = styled.div`
   font-size: 24px;
@@ -25,7 +26,13 @@ const Descriptionsentence = styled.div`
   margin-bottom: 6px;
 `;
 
-const Introduction = () => {
+const Introduction = ({ purpose, secondaryPurpose, times, where }) => {
+  const nodata = value => {
+    if (isNullOrEmpty(value)) {
+      return '만료되었습니다';
+    }
+    return value;
+  };
   return (
     <section>
       <InnerBox color="clearChill">
@@ -36,10 +43,12 @@ const Introduction = () => {
         </HeaderSentence>
         <br />
         <br />
-        <Descriptionsentence>운동 목적 :</Descriptionsentence>
-        <Descriptionsentence>건강 목표 :</Descriptionsentence>
-        <Descriptionsentence>일주일 2~3회, 피트니스 센터</Descriptionsentence>
-        <Descriptionsentence>회원님에게 적합한 루틴을 디자인합니다.</Descriptionsentence>
+        <Descriptionsentence>운동 목적 : {nodata(purpose)}</Descriptionsentence>
+        <Descriptionsentence>다음 목적 : {nodata(secondaryPurpose)}</Descriptionsentence>
+        <Descriptionsentence>
+          일주일 {nodata(times)}, {nodata(where)}
+        </Descriptionsentence>
+        <Descriptionsentence>을 기반으로 적합한 루틴을 디자인합니다.</Descriptionsentence>
         <br />
         <br />
         <Descriptionsentence center bold>
