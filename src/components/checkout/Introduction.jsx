@@ -37,7 +37,7 @@ const Introduction = ({ purpose, secondaryPurpose, times, where }) => {
     <section>
       <InnerBox color="clearChill">
         <HeaderSentence>
-          맞춤 컨설팅을 위해 입력된 정보가
+          맞춤 디자인을 위해 입력된 정보가
           <br />
           담당자에게 배정되었습니다.
         </HeaderSentence>

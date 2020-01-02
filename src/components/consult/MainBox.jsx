@@ -100,7 +100,7 @@ const Buttons = ({ stage, lastStage, questions }) => {
 
 const MainBox = ({ location, questions, onChange, onChangeArray }) => {
   const { s } = queryString.parse(location.search);
-  const lastStage = Number(17);
+  const lastStage = Number(16);
   if (Number(s) > lastStage) {
     return <Redirect to="/consult?s=1" />;
   }

@@ -8,7 +8,6 @@ const MainContentBlock = styled.div`
   padding-top: 40px 0;
   /* background: blue; */
   box-sizing: border-box;
-  height: 40vh;
   width: 100vw;
   position: relative;
 `;
@@ -31,19 +30,20 @@ const MainSubWord = styled.div`
   margin-top: 14px;
 `;
 
+const MainImg = styled.img`
+  width: 500px;
+  height: auto;
+`;
+
 const MainSecondContent = () => {
   return (
     <MainContentBlock>
       <BilateralPadding>
         <MainBigWord>
           올뉴핏이 야심차게 준비한 <div />
-          프리미엄 컨설팅🔥
+          프리미엄 디자인🔥
         </MainBigWord>
-        <MainSubWord>
-          이 모든 것을
-          <div />
-          지금 이 기회에
-        </MainSubWord>
+        <MainImg src={`${window.location.origin}/images/introimg.jpg`} />
       </BilateralPadding>
     </MainContentBlock>
   );

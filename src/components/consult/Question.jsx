@@ -157,14 +157,7 @@ const Question = ({ stage, questions, onChange, onChangeArray }) => {
             onChangeArray={onChangeArray}
           />
         );
-      case 17:
-        return (
-          <StageSeventeen
-            onChange={onChange}
-            question={questions[matchNumToString(Number(stage))]}
-            onChangeArray={onChangeArray}
-          />
-        );
+
       default:
         return <Redirect to="/consult?s=1" />;
     }

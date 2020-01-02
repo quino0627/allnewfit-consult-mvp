@@ -87,7 +87,7 @@ const MainContent = () => {
         </MainBigWord>
         <MainSubWord>운동도, 관리도 내 몸에 맞게</MainSubWord>
         <CustomButton theme="goToForm" href="/consult?s=1">
-          운동/건강 컨설팅 알아보기
+          운동/건강 디자인 알아보기
         </CustomButton>
       </BilateralPadding>
     </MainContentBlock>

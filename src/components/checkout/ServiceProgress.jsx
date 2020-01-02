@@ -25,7 +25,7 @@ const ServiceProgress = () => {
   return (
     <InnerBox>
       <UpperPadding />
-      <HeaderSentence>운동/건강 컨설팅에 대해 더 알아보기</HeaderSentence>
+      <HeaderSentence>운동/건강 디자인에 대해 더 알아보기</HeaderSentence>
     </InnerBox>
   );
 };

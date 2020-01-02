@@ -1,38 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create();
-
-const isHandlerEnabled = (config = {}) => {
-  return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true;
-};
-
-const errorHandler = error => {
-  if (isHandlerEnabled(error.config)) {
-    return error.response;
-  }
-  // eslint-disable-next-line prefer-promise-reject-errors
-  return Promise.reject({ ...error });
-};
-
-const successHandler = response => {
-  if (isHandlerEnabled(response.config)) {
-    // Handle responses
-  }
-  return response;
-};
-
-client.defaults.baseURL = 'http://ec2-13-209-192-105.ap-northeast-2.compute.amazonaws.com/api';
-// const AUTHENTICATION = localStorage.getItem('authorization');
-client.interceptors.response.use(
-  response => successHandler(response),
-  error => errorHandler(error),
-);
-//not here, after login
-// const AUTHENTICATION = 'test authentication';
-
-// client.defaults.headers.common['Authorization'] = `Bearer ${AUTHENTICATION}`;
-// client.defaults.baseURL = "http://54.180.124.200";
-
+client.defaults.baseURL = 'http://allnewfit.net:4000/';
 /*
   글로벌 설정 예시:
   

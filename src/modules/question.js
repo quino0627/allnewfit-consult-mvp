@@ -185,12 +185,6 @@ const initialState = {
       choices: ['약을 먹고 있습니다', '약을 먹고있지 않습니다.'],
       value: null,
     },
-    seventeen: {
-      type: 'oneQuestionWithInputBox',
-      number: 'seventeen',
-      title: '카카오 아이디를 남겨주시면 컨설팅 레포트가 전달됩니다.',
-      value: null,
-    },
   },
 };
 

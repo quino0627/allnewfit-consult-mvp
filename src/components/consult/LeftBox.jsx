@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
+import { leftBoxSentence } from '../../lib/sentences';
 
 const LeftBoxBlock = styled.div`
   background-color: ${palette.clearChill};
@@ -18,12 +19,12 @@ const Subscription = styled.div`
   font-size: 16px;
   font-weight: 300;
   color: ${palette.cityLights};
+  text-align: center;
   @media (max-width: 961px) {
     margin: 0 10px;
     position: relative;
   }
   @media (max-width: 960px) {
-    text-align: center;
   }
 `;
 const Logo = styled.div`
@@ -37,11 +38,7 @@ const LeftBox = () => {
   return (
     <LeftBoxBlock>
       <Logo>ALLNEWFIT</Logo>
-      <Subscription>
-        맞춤 프로그램 생성을 위해 <br />
-        회원님의 목표와 생활습관을
-        <br /> 알려주세요.
-      </Subscription>
+      <Subscription>{leftBoxSentence}</Subscription>
     </LeftBoxBlock>
   );
 };

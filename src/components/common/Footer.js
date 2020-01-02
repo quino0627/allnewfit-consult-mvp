@@ -10,7 +10,6 @@ const MainContentBlock = styled.div`
   box-sizing: border-box;
   height: 140px;
   width: 100vw;
-  position: relative;
   background-color: #57606f;
 `;
 

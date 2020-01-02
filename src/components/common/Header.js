@@ -21,10 +21,9 @@ const InnerHeader = styled.div`
   height: 100%;
 `;
 /** 로고 컴포넌트 */
-const Logo = styled.span`
-  font-size: 28px;
-  font-weight: bold;
-  color: #2f3542;
+const Logo = styled.img`
+  width: 300px;
+  height: auto;
 `;
 
 /** 차후에 메뉴가 들어갈 가능성을 위해... */
@@ -35,7 +34,7 @@ const Header = ({ color = 'default' }) => {
     <HeaderBlock color={color}>
       <BilateralPadding>
         <InnerHeader>
-          <Logo>ALL NEW FIT</Logo>
+          <Logo src={`${window.location.origin}/images/logo_symbol.jpg`} />
         </InnerHeader>
       </BilateralPadding>
     </HeaderBlock>
