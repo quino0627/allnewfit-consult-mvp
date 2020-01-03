@@ -7,6 +7,7 @@ const ConsultPageWrapperBlock = styled.div`
     vertical-align: middle;
     width: 100vw;
     height: 100vh;
+    padding-bottom: 50px;
   }
   @media (max-width: 960px) {
   }

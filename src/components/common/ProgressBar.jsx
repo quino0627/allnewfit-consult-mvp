@@ -10,7 +10,7 @@ const ProgressBarBlock = styled.div`
 `;
 const TextBlock = styled.div`
   font-size: 24px;
-  color: ${palette['clearChill']};
+  color: ${palette['allnewfitBlue']};
   text-align: center;
   margin-bottom: 50px;
 `;

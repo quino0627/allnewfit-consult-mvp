@@ -6,12 +6,12 @@ import { textareaPlaceholder } from '../../../lib/sentences';
 const InputBoxBlock = styled.div`
   display: inline-flex;
   width: 90%;
-  color: ${palette.clearChill};
+  color: ${palette.allnewfitBlue};
   font-size: 24px;
 `;
 
 const InputBlock = styled.textarea`
-  color: ${palette.clearChill};
+  color: ${palette.allnewfitBlue};
   background-color: transparent;
   width: 100%;
   font-size: 18px;

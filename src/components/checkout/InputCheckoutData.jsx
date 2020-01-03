@@ -6,13 +6,13 @@ import Button from '../common/Button';
 
 const HeaderSentence = styled.div`
   font-size: 24px;
-  color: ${palette.prestigeBlue};
+  color: ${palette.allnewfitBlack};
   margin-bottom: 10px;
 `;
 
 const Descriptionsentence = styled.div`
   font-size: 18px;
-  color: ${palette.prestigeBlue};
+  color: ${palette.allnewfitBlack};
   margin-top: 12px;
   margin-bottom: 12px;
 `;
@@ -55,7 +55,7 @@ const InputBlock = styled.input`
   font-size: 14px;
   background: transparent;
   border-radius: 0;
-  border-bottom: 2px solid ${palette.clearChill};
+  border-bottom: 2px solid ${palette.allnewfitBlue};
   &:focus {
     outline: none;
   }
@@ -79,7 +79,7 @@ const InputCheckoutData = ({ name, email, phone, onChangeInputValue }) => {
         <InputDescriptionSentence>이메일</InputDescriptionSentence>
         <InputBlock type="text" onChange={onChangeValue} name="emial" />
 
-        <Button theme="checkoutSubmit">제출하기</Button>
+        <Button theme="checkoutSubmit">신청하기</Button>
       </InnerBox>
     </section>
   );

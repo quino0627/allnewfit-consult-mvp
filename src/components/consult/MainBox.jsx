@@ -29,6 +29,7 @@ const MainBoxBlock = styled.div`
 const ButtonsBlock = styled.div`
   height: 50px;
   display: flex;
+  margin-top: 30px;
   flex-direction: row-reverse;
   @media (min-width: 961px) {
   }

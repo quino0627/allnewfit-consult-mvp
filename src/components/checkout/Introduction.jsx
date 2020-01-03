@@ -35,7 +35,7 @@ const Introduction = ({ purpose, secondaryPurpose, times, where }) => {
   };
   return (
     <section>
-      <InnerBox color="clearChill">
+      <InnerBox color="allnewfitBlue">
         <HeaderSentence>
           맞춤 디자인을 위해 입력된 정보가
           <br />
@@ -52,13 +52,13 @@ const Introduction = ({ purpose, secondaryPurpose, times, where }) => {
         <br />
         <br />
         <Descriptionsentence center bold>
-          1. 아래 항목을 작성하여 제출하시고
+          1. 아래 항목을 작성하여 신청하시고
         </Descriptionsentence>
         <Descriptionsentence center bold>
           2. 올뉴핏 카카오톡 채널을 추가해주세요
         </Descriptionsentence>
         <Descriptionsentence center bold>
-          3. 올뉴핏 채팅방에 제출한 이름(이메일)을 보내주세요
+          3. 올뉴핏 채팅방에 신청한 이름(이메일)을 보내주세요
         </Descriptionsentence>
       </InnerBox>
     </section>

@@ -4,13 +4,13 @@ import palette from '../../../lib/styles/palette';
 
 const InputBoxBlock = styled.div`
   display: inline-flex;
-  color: ${palette.clearChill};
+  color: ${palette.allnewfitBlue};
   font-size: 24px;
-  border-bottom: 3px solid ${palette.clearChill};
+  border-bottom: 3px solid ${palette.allnewfitBlue};
 `;
 
 const InputBlock = styled.input`
-  color: ${palette.clearChill};
+  color: ${palette.allnewfitBlue};
   background-color: transparent;
   border: none;
   width: 150px;

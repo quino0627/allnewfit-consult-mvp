@@ -31,7 +31,8 @@ const MainSubWord = styled.div`
 `;
 
 const MainImg = styled.img`
-  width: 500px;
+  max-width: 500px;
+  width: 80%;
   height: auto;
 `;
 

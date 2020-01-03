@@ -8,7 +8,7 @@ const UpperPadding = styled.div`
 `;
 const HeaderSentence = styled.div`
   font-size: 24px;
-  color: ${palette.prestigeBlue};
+  color: ${palette.allnewfitBlack};
   margin: 0 auto;
   margin-bottom: 10px;
   text-align: center;
@@ -16,7 +16,7 @@ const HeaderSentence = styled.div`
 
 const Descriptionsentence = styled.div`
   font-size: 18px;
-  color: ${palette.prestigeBlue};
+  color: ${palette.allnewfitBlack};
   margin-top: 12px;
   margin-bottom: 12px;
 `;

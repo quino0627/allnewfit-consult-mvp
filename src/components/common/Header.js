@@ -22,7 +22,7 @@ const InnerHeader = styled.div`
 `;
 /** 로고 컴포넌트 */
 const Logo = styled.img`
-  width: 300px;
+  width: 150px;
   height: auto;
 `;
 
@@ -34,7 +34,7 @@ const Header = ({ color = 'default' }) => {
     <HeaderBlock color={color}>
       <BilateralPadding>
         <InnerHeader>
-          <Logo src={`${window.location.origin}/images/logo_symbol.jpg`} />
+          <Logo src={`${window.location.origin}/images/logo_symbol.png`} />
         </InnerHeader>
       </BilateralPadding>
     </HeaderBlock>

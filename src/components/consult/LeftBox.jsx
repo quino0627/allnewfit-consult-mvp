@@ -4,7 +4,7 @@ import palette from '../../lib/styles/palette';
 import { leftBoxSentence } from '../../lib/sentences';
 
 const LeftBoxBlock = styled.div`
-  background-color: ${palette.clearChill};
+  background-color: ${palette.allnewfitBlue};
   @media (min-width: 961px) {
     width: 250px;
     padding: 50px 10px;

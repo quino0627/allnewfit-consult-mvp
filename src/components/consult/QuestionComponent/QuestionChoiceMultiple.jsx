@@ -18,7 +18,7 @@ const Buttons = ({ length, children }) => {
 const ButtonBlock = styled.div`
   width: 90%;
   min-height: ${props => props.size || '40px'};
-  border: 0.5px solid ${palette.clearChill};
+  border: 0.5px solid ${palette.allnewfitBlue};
   border-radius: 10px;
 
   margin: ${props => props.margin || '20px auto 20px 0'};
@@ -30,11 +30,11 @@ const ButtonBlock = styled.div`
 
   font-size: ${props => props.font || '24px'};
   font-weight: 400;
-  color: ${palette.clearChill};
+  color: ${palette.allnewfitBlue};
   cursor: pointer;
   @media (min-width: 961px) {
     &:hover {
-      background: ${palette.clearChill};
+      background: ${palette.allnewfitBlue};
       color: ${palette.default};
     }
   }
@@ -42,7 +42,7 @@ const ButtonBlock = styled.div`
   ${props =>
     props.checked === 'true' &&
     css`
-      background: ${palette.clearChill};
+      background: ${palette.allnewfitBlue};
       color: ${palette.default};
     `}
   ${props =>

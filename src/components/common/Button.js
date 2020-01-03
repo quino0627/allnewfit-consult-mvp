@@ -71,12 +71,11 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
          width: 80px;
          height: 50px;
          border-radius: 5px;
-         background-color: ${palette.clearChill};
-         border: 1px solid ${palette.clearChill};
+         background-color: ${palette.allnewfitBlue};
+         border: 1px solid ${palette.allnewfitBlue};
          color: ${palette.default};
          font-weight: 500;
          padding: 0 24px;
-         margin-top: 30px;
        `}
        ${props =>
          props.theme === 'goToPrev' &&
@@ -89,7 +88,7 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
            color: ${palette.peace};
            font-weight: 500;
            padding: 0 24px;
-           margin-top: 30px;
+
            /* &:hover,
          &:focus {
            background: #7f8c8d;
@@ -101,7 +100,7 @@ const Button = ({ children, to, onClick, disabled = false, theme = 'default', hi
              width: 80px;
              height: 50px;
              border-radius: 5px;
-             background-color: ${palette.clearChill};
+             background-color: ${palette.allnewfitBlue};
 
              color: ${palette.default};
              font-weight: 500;
