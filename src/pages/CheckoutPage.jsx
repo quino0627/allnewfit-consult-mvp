@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckoutPageWrapper from '../components/checkout/CheckoutPageWrapper';
 import Header from '../components/common/Header';
-import ServiceProgress from '../components/checkout/ServiceProgress';
+// import ServiceProgress from '../components/checkout/ServiceProgress';
 import IntroductionContainer from '../containers/checkout/IntroductionContainer';
 import InputCheckoutDataContainer from '../containers/checkout/InputCheckoutDataContainer';
 import InformationUsageAgreement from '../components/checkout/InformationUsageAgreement';
@@ -16,8 +16,7 @@ const CheckoutPage = () => {
       <InputCheckoutDataContainer />
       {/*  */}
 
-      <InformationUsageAgreement />
-      <ServiceProgress />
+      {/* <ServiceProgress /> */}
     </CheckoutPageWrapper>
   );
 };

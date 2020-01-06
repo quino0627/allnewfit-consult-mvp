@@ -20,6 +20,7 @@ const HeaderSentence = styled.div`
 const Descriptionsentence = styled.div`
   font-size: 14px;
   color: ${palette.grisaille};
+
   ${props =>
     props.center &&
     css`
@@ -55,6 +56,7 @@ const Togglebar = styled.div`
   justify-content: space-between;
   height: 60px;
   padding: 0 20px;
+  cursor: pointer;
 `;
 
 const InformationUsageAgreement = () => {

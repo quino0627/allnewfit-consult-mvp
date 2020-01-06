@@ -16,16 +16,15 @@ export default function createRequestSaga(type, request) {
     yield put(startLoading(type)); // 로딩 시작
     try {
       const response = yield call(request, action.payload);
-      // if (response.status === 500 || response.status === 413) {
-      //   yield put({
-      //     type: FAILURE,
-      //     payload: response.data,
-      //     meta: response,
-      //   });
-      //   yield put(finishLoading(type)); // 로딩 끝
-      //   return;
-      // }
-      // console.log(response.data.errorCode);
+      if (response.status === 500 || response.status === 400) {
+        yield put({
+          type: FAILURE,
+          payload: response.data,
+          meta: response,
+        });
+        yield put(finishLoading(type)); // 로딩 끝
+        return;
+      }
       if (response.data.errorCode !== undefined) {
         yield put({
           type: FAILURE,

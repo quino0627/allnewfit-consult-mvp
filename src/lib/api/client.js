@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const client = axios.create();
-client.defaults.baseURL = 'http://allnewfit.net:4000/';
+// client.defaults.baseURL = 'http://allnewfit.net:4000/';
+client.defaults.baseURL = 'http://localhost:4000/api';
 /*
   글로벌 설정 예시:
   

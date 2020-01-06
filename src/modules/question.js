@@ -1,13 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { createAction, handleActions } from 'redux-actions';
-import createRequestSaga, { createRequestActionTypes } from '../lib/createRequestSaga';
-import { takeLatest } from 'redux-saga/effects';
 import { produce } from 'immer';
+import { takeLatest } from 'redux-saga/effects';
+import createRequestSaga, { createRequestActionTypes } from '../lib/createRequestSaga';
+import * as consultAPI from '../lib/api/consult';
 
 const INITIALIZE = 'question/INITIALIZE';
 const CHANGE_INPUT_VALUE = 'question/CHANGE_INPUT/VALUE';
 const CHANGE_QUESTION_VALUE = 'question/CHANGE_VALUE';
 const CHANGE_ARRAY_VALUE = 'question/CHANGE_ARRAY_VALUE';
+const [APPLY_CONSULT, APPLY_CONSULT_SUCCESS, APPLY_CONSULT_FAILURE] = createRequestActionTypes(
+  'question/APPLY_CONSULT',
+);
 
 export const initialize = createAction(INITIALIZE);
 export const changeInputValue = createAction(CHANGE_INPUT_VALUE, ({ field, value }) => ({
@@ -27,11 +31,20 @@ export const changeArrayValue = createAction(CHANGE_ARRAY_VALUE, ({ stage, field
   field,
   value,
 }));
+export const applyConsult = createAction(APPLY_CONSULT, personalInfo => personalInfo);
+
+const applyConsultSaga = createRequestSaga(APPLY_CONSULT, consultAPI.sendConsult);
+
+export function* questionSaga() {
+  yield takeLatest(APPLY_CONSULT, applyConsultSaga);
+}
 
 const initialState = {
   name: null,
   emial: null,
   phone: null,
+  apply: null,
+  applyError: null,
   // StageOne은 Introduce이므로 value가 필요없음
   questions: {
     one: {
@@ -208,6 +221,16 @@ const question = handleActions(
         } else {
           draft.questions[stage][field].push(value);
         }
+      }),
+    [APPLY_CONSULT_SUCCESS]: (state, { payload: response }) =>
+      produce(state, draft => {
+        console.log(response);
+        draft.apply = response;
+      }),
+    [APPLY_CONSULT_FAILURE]: (state, { payload: error }) =>
+      produce(state, draft => {
+        console.log(error);
+        draft.applyError = error;
       }),
   },
   initialState,

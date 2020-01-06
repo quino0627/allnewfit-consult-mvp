@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import BilateralPadding from '../common/BilateralPadding';
+import { mainSecondContainerTitle } from '../../lib/sentences';
 
 const MainContentBlock = styled.div`
   color: #2f3542;
@@ -32,7 +33,7 @@ const MainSubWord = styled.div`
 
 const MainImg = styled.img`
   max-width: 500px;
-  width: 80%;
+  width: 100%;
   height: auto;
 `;
 
@@ -40,10 +41,7 @@ const MainSecondContent = () => {
   return (
     <MainContentBlock>
       <BilateralPadding>
-        <MainBigWord>
-          올뉴핏이 야심차게 준비한 <div />
-          프리미엄 디자인🔥
-        </MainBigWord>
+        <MainBigWord>{mainSecondContainerTitle}</MainBigWord>
         <MainImg src={`${window.location.origin}/images/introimg.jpg`} />
       </BilateralPadding>
     </MainContentBlock>

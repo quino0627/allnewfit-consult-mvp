@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import BilateralPadding from '../common/BilateralPadding';
 import Button from '../common/Button';
+import { mainApplyButtonText } from '../../lib/sentences';
 
 const MainContentBlock = styled.div`
   /* background: blue; */
@@ -87,7 +88,7 @@ const MainContent = () => {
         </MainBigWord>
         <MainSubWord>운동도, 관리도 내 몸에 맞게</MainSubWord>
         <CustomButton theme="goToForm" href="/consult?s=1">
-          운동/건강 디자인 알아보기
+          {mainApplyButtonText}
         </CustomButton>
       </BilateralPadding>
     </MainContentBlock>
