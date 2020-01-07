@@ -22,8 +22,6 @@ const MainBoxContainer = ({ location, history }) => {
   };
 
   useEffect(() => {
-    console.log(questions);
-    console.log(`${Number(s)}이다`);
     // 첫번째 페이지가 아니고, 퀘스쳔1이 널이나 엠티이면
     if (Number(s) !== 1 && isNullOrEmpty(questions.one.value)) {
       history.push('/consult?s=1');

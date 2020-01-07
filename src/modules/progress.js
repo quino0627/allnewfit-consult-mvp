@@ -29,7 +29,6 @@ const progress = handleActions(
       }),
     [SET_PERCENT]: (state, { payload: { percent } }) =>
       produce(state, draft => {
-        console.log(`${percent}는 퍼센트이다`);
         draft.percent = percent;
       }),
   },

@@ -30,9 +30,6 @@ const InputBlock = styled.textarea`
 
 //
 const QuestionDescriptionBox = ({ number, onChange, value, description, long }) => {
-  console.log((!isNullOrEmpty(value)).toString());
-  console.log((value !== '해당사항 없음').toString());
-  console.log(typeof value);
   return (
     <InputBoxBlock
       // nullorempty가 아니거나, value가 해당사항 없음이 아닐 경우 return "true"

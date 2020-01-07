@@ -113,7 +113,6 @@ function useOutsideAlerter(ref, setFocused) {
 const Footer = () => {
   const [focused, setFocused] = useState(false);
   const onFocusChange = () => {
-    console.log('hello');
     setFocused(!focused);
   };
 

@@ -7,7 +7,6 @@ const HeaderBlock = styled.div`
 `;
 
 const QuestionHeader = ({ title }) => {
-  console.log(title);
   return <HeaderBlock>{title}</HeaderBlock>;
 };
 
