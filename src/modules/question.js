@@ -43,6 +43,7 @@ const initialState = {
   name: null,
   emial: null,
   phone: null,
+  consultType: null,
   apply: null,
   applyError: null,
   // StageOne은 Introduce이므로 value가 필요없음
@@ -224,12 +225,10 @@ const question = handleActions(
       }),
     [APPLY_CONSULT_SUCCESS]: (state, { payload: response }) =>
       produce(state, draft => {
-        console.log(response);
         draft.apply = response;
       }),
     [APPLY_CONSULT_FAILURE]: (state, { payload: error }) =>
       produce(state, draft => {
-        console.log(error);
         draft.applyError = error;
       }),
   },

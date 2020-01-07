@@ -1,11 +1,16 @@
-import React from 'react';
-import ClipLoader from 'react-spinners/ClipLoader';
+import React, { useState } from 'react';
+import BeatLoader from 'react-spinners/BeatLoader';
 import styled, { css } from 'styled-components';
 import { css as emotionCSS } from '@emotion/core';
 import InnerBox from './InnerBox';
 import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
-import { urAgree, serverErrorAlert } from '../../lib/sentences';
+import {
+  urAgree,
+  serverErrorAlert,
+  successUpload,
+  successUploadDescription,
+} from '../../lib/sentences';
 import InformationUsageAgreement from './InformationUsageAgreement';
 import { ReactComponent as Check } from '../../static/images/check.svg';
 
@@ -99,12 +104,106 @@ const CenterDescription = styled.div`
   text-align: center;
 `;
 
+const SelectConsultTypeBlock = styled.div`
+  width: 100%;
+  height: 180px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  display: flex;
+`;
+
+const ConsultType = styled.button`
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  border: 3px solid ${palette.allnewfitBlue};
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.22);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${palette.allnewfitBlue};
+  border-radius: 12px;
+  cursor: pointer;
+  &:first-child {
+    margin: 0 5px 0 0;
+  }
+  &:hover {
+    color: ${palette.default};
+    background: ${palette.allnewfitBlue};
+  }
+  ${props =>
+    props.selected === 'true' &&
+    css`
+      color: ${palette.default};
+      background: ${palette.allnewfitBlue};
+    `}
+`;
+
+const ConsultTypeTitle = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+
+  text-align: center;
+  margin-bottom: 10px;
+`;
+const ConsultTypePrice = styled.div`
+  font-size: 14px;
+  margin-bottom: 20px;
+`;
+const ConsultDescription = styled.div`
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+const ConsultSelect = React.memo(({ consultType, onChangeInputValue }) => {
+  const handleChange = e => {
+    onChangeInputValue({ field: 'consultType', value: e.target.getAttribute('value') });
+  };
+  return (
+    <SelectConsultTypeBlock>
+      <ConsultType
+        value="TotalMove"
+        onClick={handleChange}
+        selected={(consultType === 'TotalMove').toString()}
+      >
+        <ConsultTypeTitle value="TotalMove">
+          Total Move <br /> 디자인
+        </ConsultTypeTitle>
+        <ConsultTypePrice value="TotalMove">40,000원</ConsultTypePrice>
+        <ConsultDescription value="TotalMove">
+          나한테 꼭 필요한
+          <br />
+          핵심만 받아보기
+        </ConsultDescription>
+      </ConsultType>
+      <ConsultType
+        value="SevenDaysMove"
+        onClick={handleChange}
+        selected={(consultType === 'SevenDaysMove').toString()}
+      >
+        <ConsultTypeTitle value="SevenDaysMove">
+          7 Days Move <br /> 디자인
+        </ConsultTypeTitle>
+        <ConsultTypePrice value="SevenDaysMove">170,000원</ConsultTypePrice>
+        <ConsultDescription value="SevenDaysMove">일주일 운동 실천과</ConsultDescription>
+        <ConsultDescription value="SevenDaysMove">
+          올뉴핏 데일리 케어까지 받아보기
+        </ConsultDescription>
+      </ConsultType>
+    </SelectConsultTypeBlock>
+  );
+});
+
 const InputCheckoutData = ({
   name,
   nameError,
   email,
   phone,
   phoneError,
+  consultType,
+  consultTypeError,
   onChangeInputValue,
   onSubmit,
   loading,
@@ -122,7 +221,13 @@ const InputCheckoutData = ({
             <CenterDescription>
               <Check />
             </CenterDescription>
-            <HeaderSentence>{apply.name}님, 운동 정보가 성공적으로 제출되었습니다.</HeaderSentence>
+            <HeaderSentence>
+              {apply.name}님, {successUpload}
+            </HeaderSentence>
+            <Descriptionsentence>{successUploadDescription}</Descriptionsentence>
+            <Button theme="checkoutSubmit" to="/">
+              메인으로
+            </Button>
           </InnerBox>
         </section>
         <InformationUsageAgreement />
@@ -134,11 +239,11 @@ const InputCheckoutData = ({
       <section>
         {loading && (
           <FullScreen>
-            <ClipLoader
+            <BeatLoader
               css={override}
               sizeUnit="px"
               size={50}
-              color={palette.allnewfitBlue}
+              color={palette.watermelon}
               loading={loading}
             />
           </FullScreen>
@@ -151,12 +256,15 @@ const InputCheckoutData = ({
           <InputBlock type="text" onChange={onChangeValue} name="phone" value={phone} />
           <InputDescriptionSentence>이메일</InputDescriptionSentence>
           <InputBlock type="text" onChange={onChangeValue} name="email" value={email} />
+          <InputDescriptionSentence necessory>희망 디자인 유형</InputDescriptionSentence>
+          <ConsultSelect consultType={consultType} onChangeInputValue={onChangeInputValue} />
           <Button theme="checkoutSubmit" onClick={onSubmit}>
             신청하기
           </Button>
           <ErrorDescription>
             {nameError && nameError}
             {phoneError && phoneError}
+            {consultTypeError && consultTypeError}
           </ErrorDescription>
           <AgreeDescription>{urAgree}</AgreeDescription>
 

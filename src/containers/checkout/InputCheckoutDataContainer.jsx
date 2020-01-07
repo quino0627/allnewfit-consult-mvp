@@ -9,12 +9,14 @@ const InputCheckoutDataContainer = () => {
   const dispatch = useDispatch();
   const [nameError, setNameError] = useState(null);
   const [phoneError, setPhoneError] = useState(null);
-  const { name, email, phone, questions, loading, apply, applyError } = useSelector(
+  const [consultTypeError, setConsultTypeError] = useState(null);
+  const { name, email, phone, questions, consultType, loading, apply, applyError } = useSelector(
     ({ question, loading }) => ({
       name: question.name,
       email: question.email,
       phone: question.phone,
       questions: question.questions,
+      consultType: question.consultType,
       apply: question.apply,
       applyError: question.applyError,
       loading: loading['question/APPLY_CONSULT'],
@@ -41,10 +43,18 @@ const InputCheckoutDataContainer = () => {
         return;
       }
       setPhoneError(null);
-      console.log(JSON.stringify(questions));
-      dispatch(applyConsult({ personalInfo: JSON.stringify({ name, phone, email, questions }) }));
+      if (!consultType) {
+        setConsultTypeError('디자인 타입을 선택해 주세요.');
+        return;
+      }
+      setConsultTypeError(null);
+      dispatch(
+        applyConsult({
+          personalInfo: JSON.stringify({ name, phone, email, consultType, questions }),
+        }),
+      );
     },
-    [dispatch, email, name, phone, questions],
+    [dispatch, email, name, phone, consultType, questions],
   );
 
   return (
@@ -56,6 +66,8 @@ const InputCheckoutDataContainer = () => {
       email={email}
       phone={phone}
       phoneError={phoneError}
+      consultType={consultType}
+      consultTypeError={consultTypeError}
       loading={loading}
       apply={apply}
       applyError={applyError}
