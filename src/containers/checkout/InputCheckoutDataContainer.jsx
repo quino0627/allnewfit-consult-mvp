@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import InputCheckoutData from '../../components/checkout/InputCheckoutData';
 import { changeInputValue, applyConsult } from '../../modules/question';
+import { isNullOrEmpty } from '../../lib/library';
 
 const InputCheckoutDataContainer = () => {
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const dispatch = useDispatch();
   const [nameError, setNameError] = useState(null);
   const [phoneError, setPhoneError] = useState(null);
   const [consultTypeError, setConsultTypeError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
   const { name, email, phone, questions, consultType, loading, apply, applyError } = useSelector(
     ({ question, loading }) => ({
       name: question.name,
@@ -48,13 +51,18 @@ const InputCheckoutDataContainer = () => {
         return;
       }
       setConsultTypeError(null);
+      if (!isNullOrEmpty(email) && !emailRegex.test(email)) {
+        setEmailError('올바른 이메일 형식이 아닙니다.');
+        return;
+      }
+      setEmailError(null);
       dispatch(
         applyConsult({
           personalInfo: JSON.stringify({ name, phone, email, consultType, questions }),
         }),
       );
     },
-    [dispatch, email, name, phone, consultType, questions],
+    [name, phone, consultType, email, emailRegex, dispatch, questions],
   );
 
   return (
@@ -64,6 +72,7 @@ const InputCheckoutDataContainer = () => {
       name={name}
       nameError={nameError}
       email={email}
+      emailError={emailError}
       phone={phone}
       phoneError={phoneError}
       consultType={consultType}

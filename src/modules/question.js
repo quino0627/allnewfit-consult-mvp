@@ -41,7 +41,7 @@ export function* questionSaga() {
 
 const initialState = {
   name: null,
-  emial: null,
+  email: null,
   phone: null,
   consultType: null,
   apply: null,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 import styled, { css } from 'styled-components';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { css as emotionCSS } from '@emotion/core';
 import InnerBox from './InnerBox';
 import palette from '../../lib/styles/palette';
@@ -10,9 +11,13 @@ import {
   serverErrorAlert,
   successUpload,
   successUploadDescription,
+  consultTimeDescription,
+  depositDescription,
+  sevenDaysCaution,
 } from '../../lib/sentences';
 import InformationUsageAgreement from './InformationUsageAgreement';
 import { ReactComponent as Check } from '../../static/images/check.svg';
+import InformationRefund from './InformationRefund';
 
 const override = emotionCSS`
     display: block;
@@ -45,6 +50,27 @@ const Descriptionsentence = styled.div`
   color: ${palette.allnewfitBlack};
   margin-top: 12px;
   margin-bottom: 12px;
+`;
+
+const DepositBlock = styled.div`
+  background: ${palette.cityLights};
+  width: 80%;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin: 0 auto 10px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const Deposit = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+`;
+const CopyDescirption = styled.div`
+  font-size: 12px;
+`;
+const SevenDaysCaution = styled.div`
+  font-size: 12px;
 `;
 
 const InputDescriptionSentence = styled.div`
@@ -200,6 +226,7 @@ const InputCheckoutData = ({
   name,
   nameError,
   email,
+  emailError,
   phone,
   phoneError,
   consultType,
@@ -210,6 +237,7 @@ const InputCheckoutData = ({
   apply,
   applyError,
 }) => {
+  const [copied, setCopied] = useState(false);
   const onChangeValue = e => {
     onChangeInputValue({ field: e.target.name, value: e.target.value });
   };
@@ -225,12 +253,25 @@ const InputCheckoutData = ({
               {apply.name}님, {successUpload}
             </HeaderSentence>
             <Descriptionsentence>{successUploadDescription}</Descriptionsentence>
-            <Button theme="checkoutSubmit" to="/">
-              메인으로
-            </Button>
+            <Descriptionsentence>{consultTimeDescription}</Descriptionsentence>
+            {apply.consultType === 'SevenDaysMove' && (
+              <Descriptionsentence>{sevenDaysCaution}</Descriptionsentence>
+            )}
+            <CopyToClipboard text={depositDescription} onCopy={() => setCopied(true)}>
+              <DepositBlock>
+                <Deposit>
+                  {apply.consultType === 'SevenDaysMove'
+                    ? '7 Days Move Design'
+                    : 'Total Move Design'}{' '}
+                  -{apply.consultType === 'SevenDaysMove' ? '170,000원' : '40,000원'}
+                </Deposit>
+                <Deposit>{depositDescription}</Deposit>
+                <CopyDescirption>{!copied ? '클릭해서 복사' : '복사 완료!'}</CopyDescirption>
+              </DepositBlock>
+            </CopyToClipboard>
           </InnerBox>
         </section>
-        <InformationUsageAgreement />
+        <InformationRefund />
       </>
     );
   }
@@ -265,6 +306,7 @@ const InputCheckoutData = ({
             {nameError && nameError}
             {phoneError && phoneError}
             {consultTypeError && consultTypeError}
+            {emailError && emailError}
           </ErrorDescription>
           <AgreeDescription>{urAgree}</AgreeDescription>
 

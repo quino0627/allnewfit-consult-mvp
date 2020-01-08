@@ -127,7 +127,7 @@ const Footer = () => {
             이용약관
           </MainBigWord>
           <MainBigWord>
-            {businessName} | {busineseCEO} | 사업자정보확인
+            {businessName} | {busineseCEO}
           </MainBigWord>
           <MainBigWord>
             {businessNumber} | {mailOrderNumber} | {serviceCenter}

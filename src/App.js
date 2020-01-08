@@ -1,4 +1,6 @@
 import React from 'react';
+// import ReactGA from 'react-ga';
+// import { createBrowserHistory } from 'history';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 // import { device } from 'styles/device';
@@ -6,6 +8,7 @@ import { createGlobalStyle } from 'styled-components';
 // pages
 import { MainPage, NotFoundPage, ConsultLoadingPage, CheckoutPage } from './pages';
 import ConsultPage from './pages/ConsultPage';
+import withTracker from './withTracker';
 
 const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6,section,p,ul,ol,li,dl,dt,dd,body,html {
@@ -51,6 +54,15 @@ const GlobalStyle = createGlobalStyle`
 
 // const store = configure();
 
+// const trackingId = 'UA-147374950-2'; // Replace with your Google Analytics tracking ID
+// ReactGA.initialize(trackingId);
+// const history = createBrowserHistory();
+// // Initialize google analytics page view tracking
+// history.listen(location => {
+//   ReactGA.set({ page: location.pathname }); // Update the user's current page
+//   ReactGA.pageview(location.pathname); // Record a pageview for the given page
+// });
+
 const App = ({ match }) => {
   // const user = localStorage.getItem('user');
   // const accessToken = localStorage.getItem('accessToken');
@@ -71,11 +83,11 @@ const App = ({ match }) => {
     <>
       <GlobalStyle />
       <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route path="/consult/loading" component={ConsultLoadingPage} />
-        <Route path="/consult" component={ConsultPage} />
-        <Route path="/checkout" component={CheckoutPage} />
-        <Route component={NotFoundPage} />
+        <Route exact path="/" component={withTracker(MainPage)} />
+        <Route path="/consult/loading" component={withTracker(ConsultLoadingPage)} />
+        <Route path="/consult" component={withTracker(ConsultPage)} />
+        <Route path="/checkout" component={withTracker(CheckoutPage)} />
+        <Route component={withTracker(NotFoundPage)} />
       </Switch>
     </>
   );
