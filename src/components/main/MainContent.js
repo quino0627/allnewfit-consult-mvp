@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import BilateralPadding from '../common/BilateralPadding';
-import Button from '../common/Button';
+// import Button from '../common/Button';
 import { mainApplyButtonText } from '../../lib/sentences';
+import { ReactComponent as DownArrow } from '../../static/images/down_arrow.svg';
 
 const MainContentBlock = styled.div`
   /* background: blue; */
@@ -23,16 +24,16 @@ const MainContentBlock = styled.div`
     content: '';
     position: absolute;
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: calc(90vh - 80px);
     ${() =>
       global.isMobile &&
       css`
-        height: calc(100vmax - 80px);
+        height: calc(90vmax - 80px);
       `}
     top: 0;
     left: 0;
     z-index: -1;
-    background-image: url(${window.location.origin + '/images/background.jpg'});
+    background-image: url(${`${window.location.origin}/images/background.jpg`});
     transform: scaleX(-1); /* Flip Image */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -51,7 +52,8 @@ const MainBigWord = styled.div`
   ${() =>
     global.isMobile &&
     css`
-      padding-top: 130px;
+      padding-top: 150px;
+      font-size: 25px;
     `}
 `;
 
@@ -78,18 +80,27 @@ const CustomButton = styled.a`
   user-select: none;
 `;
 
+const StyledDownArrow = styled(DownArrow)`
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 25px);
+`;
+
 const MainContent = () => {
   return (
     <MainContentBlock>
       <BilateralPadding>
         <MainBigWord>
-          관리의 가치를 아는 당신 <div />
+          관리의 가치를 아는 당신, <div />
           변화를 위한 첫 걸음
         </MainBigWord>
         <MainSubWord>운동도, 관리도 내 몸에 맞게</MainSubWord>
         <CustomButton theme="goToForm" href="/consult?s=1">
           {mainApplyButtonText}
         </CustomButton>
+        <StyledDownArrow />
       </BilateralPadding>
     </MainContentBlock>
   );

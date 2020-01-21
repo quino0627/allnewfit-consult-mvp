@@ -24,7 +24,7 @@ export const urAgree =
 
 export const successUpload = '운동 정보가 성공적으로 제출되었습니다.';
 export const successUploadDescription =
-  '디자인 신청 입금 문자 발송후 입금순으로 작업이 진행됩니다. 참고 부탁드려요!';
+  '입금 확인 문자 발송후 입금순으로 작업이 진행됩니다. 참고 부탁드려요!';
 export const depositDescription = '기업은행 201-081320-01-011 올뉴핏';
 export const consultTimeDescription =
   '디자인 레포트는 입금 후 1~2일 이내에 확인이 가능합니다. 감사합니다.';

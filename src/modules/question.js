@@ -12,6 +12,9 @@ const CHANGE_ARRAY_VALUE = 'question/CHANGE_ARRAY_VALUE';
 const [APPLY_CONSULT, APPLY_CONSULT_SUCCESS, APPLY_CONSULT_FAILURE] = createRequestActionTypes(
   'question/APPLY_CONSULT',
 );
+const [TEMP_CONSULT, TEMP_CONSULT_SUCCESS, TEMP_CONSULT_FAILURE] = createRequestActionTypes(
+  'question/TEMP_CONSULT',
+);
 
 export const initialize = createAction(INITIALIZE);
 export const changeInputValue = createAction(CHANGE_INPUT_VALUE, ({ field, value }) => ({
@@ -32,11 +35,14 @@ export const changeArrayValue = createAction(CHANGE_ARRAY_VALUE, ({ stage, field
   value,
 }));
 export const applyConsult = createAction(APPLY_CONSULT, personalInfo => personalInfo);
+export const tempConsult = createAction(TEMP_CONSULT, personalInfo => personalInfo);
 
 const applyConsultSaga = createRequestSaga(APPLY_CONSULT, consultAPI.sendConsult);
+const tempConsultSaga = createRequestSaga(TEMP_CONSULT, consultAPI.sendConsultWOPay);
 
 export function* questionSaga() {
   yield takeLatest(APPLY_CONSULT, applyConsultSaga);
+  yield takeLatest(TEMP_CONSULT, tempConsultSaga);
 }
 
 const initialState = {
@@ -231,6 +237,8 @@ const question = handleActions(
       produce(state, draft => {
         draft.applyError = error;
       }),
+    [TEMP_CONSULT_SUCCESS]: (state, { payload: response }) => produce(state, draft => {}),
+    [TEMP_CONSULT_FAILURE]: (state, { payload: error }) => produce(state, draft => {}),
   },
   initialState,
 );

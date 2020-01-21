@@ -18,7 +18,7 @@ const Buttons = ({ length, children }) => {
 const ButtonBlock = styled.div`
   width: 90%;
   min-height: ${props => props.size || '40px'};
-  border: 0.5px solid ${palette.allnewfitBlue};
+  border: 1px solid ${palette.allnewfitBlue};
   border-radius: 10px;
 
   margin: ${props => props.margin || '20px auto 20px 0'};

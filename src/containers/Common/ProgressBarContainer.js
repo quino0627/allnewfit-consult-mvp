@@ -5,6 +5,7 @@ import ProgressBar from '../../components/common/ProgressBar';
 import { setPercent, fakeProgressStart, initialize } from '../../modules/progress';
 import { getRandomIntInclusive } from '../../lib/library';
 import useRecursiveTimeout from '../../lib/hooks/useRecursiveTimeout';
+import { tempConsult } from '../../modules/question';
 
 const ProgressBarContainer = ({ history }) => {
   const dispatch = useDispatch();
@@ -21,6 +22,11 @@ const ProgressBarContainer = ({ history }) => {
     if (percent < 90) {
       dispatch(setPercent({ percent: percent + getRandomIntInclusive(1, 10) }));
     } else {
+      dispatch(
+        tempConsult({
+          personalInfo: JSON.stringify({ questions }),
+        }),
+      );
       dispatch(setPercent({ percent: 100 }));
     }
   };
@@ -44,7 +50,7 @@ const ProgressBarContainer = ({ history }) => {
     return () => {
       dispatch(initialize());
     };
-  }, []);
+  }, [dispatch]);
 
   return <ProgressBar percent={percent} />;
 };
