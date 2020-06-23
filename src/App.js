@@ -52,21 +52,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// const store = configure();
-
-// const trackingId = 'UA-147374950-2'; // Replace with your Google Analytics tracking ID
-// ReactGA.initialize(trackingId);
-// const history = createBrowserHistory();
-// // Initialize google analytics page view tracking
-// history.listen(location => {
-//   ReactGA.set({ page: location.pathname }); // Update the user's current page
-//   ReactGA.pageview(location.pathname); // Record a pageview for the given page
-// });
-
 const App = ({ match }) => {
-  // const user = localStorage.getItem('user');
-  // const accessToken = localStorage.getItem('accessToken');
-
   const { userAgent } = navigator;
   const isMobile = !!(
     userAgent.match(/Android/i) ||
